@@ -1,6 +1,6 @@
 package com.goodtime.user.controller;
 
-import com.github.goodtime.service.UserInfoService;
+import com.github.api.service.UserInfoService;
 import com.goodtime.user.service.UserService;
 import com.kode.api.DemoService;
 import org.slf4j.Logger;
@@ -31,12 +31,11 @@ public class UserInfoController {
     @RequestMapping("test")
     public void test() {
         demoService.say();
-        userInfoService.userRegister();
-        userInfoService.userRegister();
+        userInfoService.userTest();
     }
 
     @RequestMapping("userRegister")
-    public String register(){
+    public String register() {
         return "userRegister";
     }
 }

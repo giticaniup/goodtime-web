@@ -1,4 +1,4 @@
-<?xml version= "1.0" encoding ="UTF-8" ?>
+<?xml version= "1.0" encoding ="GBK" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
@@ -15,12 +15,12 @@
 
     <context:annotation-config/>
 
-    <!-- è‡ªåŠ¨æ‰«æservice -->
+    <!-- ×Ô¶¯É¨Ãèservice -->
     <context:component-scan base-package="com.goodtime.user">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--æ—¥å¿—è®°å½•é…ç½®-->
+    <!--ÈÕÖ¾¼ÇÂ¼ÅäÖÃ-->
     <bean id="logAspect" class="com.goodtime.base.aspect.LogAspect"/>
 
     <aop:config>
@@ -31,7 +31,7 @@
         </aop:aspect>
     </aop:config>
 
-    <!--ä½¿ç”¨Gsonè¿›è¡Œjsonè½¬æ¢-->
+    <!--Ê¹ÓÃGson½øÐÐjson×ª»»-->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -41,13 +41,13 @@
         </property>
     </bean>
 
-    <!--å¼•å…¥é…ç½®æ–‡ä»¶-->
+    <!--ÒýÈëÅäÖÃÎÄ¼þ-->
     <bean id="propertyConfigurer"
           class="com.goodtime.base.util.EncryptPropertyPlaceholderConfigurer">
         <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
-    <!--é…ç½®dataSource-->
+    <!--ÅäÖÃdataSource-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${database.driver}"/>
         <property name="url" value="${database.url}"/>
@@ -55,25 +55,25 @@
         <property name="password" value="${database.password}"/>
     </bean>
 
-    <!--æ•´åˆSpringå’ŒMyBatis-->
+    <!--ÕûºÏSpringºÍMyBatis-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/UserMapper.xml"/>
     </bean>
-    <!--é…ç½®mybatisæ‰«æçš„åŒ…-->
+    <!--ÅäÖÃmybatisÉ¨ÃèµÄ°ü-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.goodtime.user.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-    <!-- å¯¹æ ‡æ³¨@Transactionalæ³¨è§£çš„Beanè¿›è¡ŒåŠ å·¥å¤„ç†ï¼Œä»¥ç»‡å…¥äº‹åŠ¡ç®¡ç†åˆ‡é¢ -->
-    <!-- é»˜è®¤æƒ…å†µä¸‹ï¼Œ<tx:annotation-drivençš„transaction-managerçš„å€¼ä¸ºtransactionManagerï¼Œ
-    å› è€Œæ­¤å¤„å¯ç›´æŽ¥ç®€åŒ–ä¸º <tx:annotation-driven/>-->
+    <!-- ¶Ô±ê×¢@Transactional×¢½âµÄBean½øÐÐ¼Ó¹¤´¦Àí£¬ÒÔÖ¯ÈëÊÂÎñ¹ÜÀíÇÐÃæ -->
+    <!-- Ä¬ÈÏÇé¿öÏÂ£¬<tx:annotation-drivenµÄtransaction-managerµÄÖµÎªtransactionManager£¬
+    Òò¶ø´Ë´¦¿ÉÖ±½Ó¼ò»¯Îª <tx:annotation-driven/>-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
           p:dataSource-ref="dataSource"/>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-    <!-- äº‹åŠ¡å¢žå¼º -->
+    <!-- ÊÂÎñÔöÇ¿ -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!--äº‹åŠ¡å±žæ€§å®šä¹‰  -->
+        <!--ÊÂÎñÊôÐÔ¶¨Òå  -->
         <tx:attributes>
             <!--            <tx:method name="get*" read-only="false"/>
                        <tx:method name="save*" rollback-for="Exception"/>
@@ -81,10 +81,10 @@
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
-    <!-- å¯¹æœåŠ¡å±‚çš„ç±»æä¾›äº‹åŠ¡æ”¯æŒ -->
+    <!-- ¶Ô·þÎñ²ãµÄÀàÌá¹©ÊÂÎñÖ§³Ö -->
     <aop:config proxy-target-class="true">
         <aop:pointcut id="serviceMethod" expression="execution(* com.goodtime.user.service.*.*(..))"/>
-        <!-- å¼•ç”¨äº‹åŠ¡å¢žå¼º -->
+        <!-- ÒýÓÃÊÂÎñÔöÇ¿ -->
         <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
     </aop:config>
 
@@ -94,5 +94,5 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
 
     <dubbo:reference id="hellodubbo" interface="com.kode.api.DemoService"/>
-    <dubbo:reference id="userInfoService" interface="com.github.goodtime.service.UserInfoService"/>
+    <dubbo:reference id="userInfoService" interface="com.github.api.service.UserInfoService"/>
 </beans>

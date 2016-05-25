@@ -1,4 +1,3 @@
-/*
 package com.goodtime.user.test;
 
 import com.goodtime.user.entity.User;
@@ -27,4 +26,3 @@ public class UserServiceTest {
         System.out.println(user);
     }
 }
-*/
