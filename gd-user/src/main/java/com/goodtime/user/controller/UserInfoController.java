@@ -1,7 +1,6 @@
 package com.goodtime.user.controller;
 
 import com.github.api.service.UserInfoService;
-import com.goodtime.user.service.UserService;
 import com.kode.api.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +19,6 @@ public class UserInfoController {
     private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private UserInfoService userInfoService;
 
     @Autowired
@@ -30,6 +26,7 @@ public class UserInfoController {
 
     @RequestMapping("test")
     public void test() {
+        logger.info("this is controller");
         demoService.say();
         userInfoService.userTest();
     }

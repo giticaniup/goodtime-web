@@ -1,7 +1,7 @@
 package com.goodtime.user.test;
 
-import com.goodtime.user.entity.User;
-import com.goodtime.user.service.UserService;
+import com.github.api.entity.User;
+import com.github.api.service.UserInfoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class UserServiceTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private UserService userService;
+    private UserInfoService userService;
 
     @Test
     public void testUserTest() throws Exception {
