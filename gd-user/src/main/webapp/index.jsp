@@ -15,5 +15,7 @@
 index
 <a href="${pageContext.request.contextPath}/user/test">test</a><br>
 <a href="${pageContext.request.contextPath}/user/userRegister">用户注册</a>
+<br>
+<a href="${pageContext.request.contextPath}/task/todoList">任务列表</a>
 </body>
 </html>
