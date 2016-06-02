@@ -28,7 +28,7 @@ public class UserInfoController {
     public void test() {
         logger.info("this is controller");
         demoService.say();
-        userInfoService.userTest();
+        userInfoService.selectById(1);
     }
 
     @RequestMapping("userRegister")

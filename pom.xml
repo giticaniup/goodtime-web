@@ -8,6 +8,7 @@
     <modules>
         <module>gd-common</module>
         <module>gd-user</module>
+        <module>rocketMQ</module>
     </modules>
     <name>goodtime</name>
     <url>http://maven.apache.org</url>
