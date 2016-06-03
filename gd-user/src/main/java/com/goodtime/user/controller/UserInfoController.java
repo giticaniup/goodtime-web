@@ -1,5 +1,6 @@
 package com.goodtime.user.controller;
 
+import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
 import com.kode.api.DemoService;
 import org.slf4j.Logger;
@@ -7,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Date;
 
 /**
  * 用户控制Controller类
@@ -24,10 +27,24 @@ public class UserInfoController {
     @Autowired
     private DemoService demoService;
 
-    @RequestMapping("test")
+    /**
+     * 测试缓存
+     */
+    @RequestMapping("/test")
     public void test() {
         logger.info("this is controller");
         demoService.say();
+        userInfoService.selectById(1);
+        userInfoService.selectById(1);
+        User user = new User();
+        user.setUserId(1);
+        user.setAge(22);
+        user.setBirthday(new Date());
+        user.setGender(0);
+        user.setName("lbq");
+        user.setPassword("11");
+        user.setUserName("lbq");
+        userInfoService.updateUser(user);
         userInfoService.selectById(1);
     }
 
