@@ -44,8 +44,8 @@ public class UserInfoController {
         user.setName("lbq");
         user.setPassword("11");
         user.setUserName("lbq");
-        userInfoService.updateUser(user);
-        userInfoService.selectById(1);
+        //userInfoService.updateUser(user);
+        logger.info(userInfoService.selectById(1).toString());
     }
 
     @RequestMapping("userRegister")

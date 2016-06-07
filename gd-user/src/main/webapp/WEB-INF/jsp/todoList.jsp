@@ -29,6 +29,7 @@
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
+    <input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -76,34 +77,33 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">Dashboard</h1>
-
+            <h1 class="page-header">欢迎您！<small>${user.userName}</small></h1>
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img options="size=128x128&&text=Hello!&bgcolor=#ccc&color=#969696" class="placeholder"/>
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <img options="size=128x128&&text=常规任务&bgcolor=#4F94CD&color=#262626" class="placeholder"/>
+                    <h4>每日任务</h4>
+                    <span class="text-muted">每天需要完成的小任务</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <img options="size=128x128&&text=健身&bgcolor=#4F94CD&color=#262626" class="placeholder"/>
+                    <h4>健身</h4>
+                    <span class="text-muted">健身</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <img options="size=128x128&&text=学习&bgcolor=#4F94CD&color=#262626" class="placeholder"/>
+                    <h4>学习</h4>
+                    <span class="text-muted">学习</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                    <img options="size=128x128&&text=编程&bgcolor=#4F94CD&color=#262626" class="placeholder"/>
+                    <h4>编程</h4>
+                    <span class="text-muted">编程</span>
                 </div>
             </div>
 
-            <h2 class="sub-header">Section title</h2>
+            <h2 class="sub-header">常规任务看板</h2>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table id="tasktable" class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -113,14 +113,7 @@
                         <th>Header</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
-                    </tr>
+                    <tbody id="tasktBody">
                     </tbody>
                 </table>
             </div>
@@ -139,5 +132,6 @@
 <!--cookie操作-->
 <script src="../../bootstrap/js/jquery.cookie.min.js"></script>
 <script src="../../bootstrap/js/placeholder.min.js"></script>
+<script type="text/javascript" src="../../js/usertask.js"></script>
 </body>
 </html>
