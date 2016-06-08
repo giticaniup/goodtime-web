@@ -24,7 +24,7 @@ $(document).ready(function loadTaskInfo(){
 function analyJson(data) {
     if(data.length > 0) {
         for(var i=0; i<data.length; i++) {
-            var append = "<tr><td>"+data[i].userId+"</td><td>"+data[i].userId+"</td><td>"+data[i].userId+"</td><td>"+data[i].userId+"</td><td>"+data[i].userId+"</td></tr>";
+            var append = "<tr><td>"+data[i].taskId+"</td><td>"+data[i].taskName+"</td><td>"+data[i].taskContent+"</td><td>"+data[i].beginTime+"</td><td>"+data[i].endTime+"</td></tr>";
             $("#tasktBody").append(append);
         }
     }

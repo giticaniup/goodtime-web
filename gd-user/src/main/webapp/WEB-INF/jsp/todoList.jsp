@@ -106,11 +106,11 @@
                 <table id="tasktable" class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>任务Id</th>
+                        <th>任务名称</th>
+                        <th>任务内容</th>
+                        <th>开始日期</th>
+                        <th>结束日期</th>
                     </tr>
                     </thead>
                     <tbody id="tasktBody">
