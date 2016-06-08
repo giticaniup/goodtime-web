@@ -102,6 +102,7 @@
             </div>
 
             <h2 class="sub-header">常规任务看板</h2>
+            <button type="button" class="btn btn-lg btn-primary">添加</button>
             <div class="table-responsive">
                 <table id="tasktable" class="table table-striped">
                     <thead>
