@@ -16,15 +16,6 @@
 
     <!-- Custom styles for this template -->
     <link href="../../css/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -32,7 +23,8 @@
     <input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -77,7 +69,9 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header">欢迎您！<small>${user.userName}</small></h1>
+            <h1 class="page-header">欢迎您！
+                <small>${user.userName}</small>
+            </h1>
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder">
                     <img options="size=128x128&&text=常规任务&bgcolor=#4F94CD&color=#262626" class="placeholder"/>
@@ -100,39 +94,81 @@
                     <span class="text-muted">编程</span>
                 </div>
             </div>
+            <%----%>
+            <h2>Example of creating Modals with Twitter Bootstrap</h2>
 
+            <!-- Button trigger modal -->
+            <button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#myModal">
+                Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog"
+                 aria-labelledby = "myModalLabel" aria-hidden = "true">
+
+                <div class = "modal-dialog">
+                    <div class = "modal-content">
+
+                        <div class = "modal-header">
+                            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                                &times;
+                            </button>
+
+                            <h4 class = "modal-title" id = "myModalLabel">
+                                This Modal title
+                            </h4>
+                        </div>
+
+                        <div class = "modal-body">
+                            Add some text here
+                        </div>
+
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn btn-default" data-dismiss = "modal">
+                                Close
+                            </button>
+
+                            <button type = "button" class = "btn btn-primary">
+                                Submit changes
+                            </button>
+                        </div>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+
+            </div><!-- /.modal -->
+            <%----%>
             <h2 class="sub-header">常规任务看板</h2>
-            <button type="button" class="btn btn-lg btn-primary">添加</button>
-            <div class="table-responsive">
-                <table id="tasktable" class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>任务Id</th>
-                        <th>任务名称</th>
-                        <th>任务内容</th>
-                        <th>开始日期</th>
-                        <th>结束日期</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tasktBody">
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="tasktable" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>任务Id</th>
+                            <th>任务名称</th>
+                            <th>任务内容</th>
+                            <th>开始日期</th>
+                            <th>结束日期</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tasktBody">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <!--cookie操作-->
+    <script src="../../bootstrap/js/jquery.cookie.min.js"></script>
+    <script src="../../bootstrap/js/placeholder.min.js"></script>
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-<!--cookie操作-->
-<script src="../../bootstrap/js/jquery.cookie.min.js"></script>
-<script src="../../bootstrap/js/placeholder.min.js"></script>
-<script type="text/javascript" src="../../js/usertask.js"></script>
+    <script type="text/javascript" src="../../js/usertask.js"></script>
 </body>
 </html>
