@@ -248,6 +248,12 @@
                 <artifactId>bonecp-spring</artifactId>
                 <version>${bonecp.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.9.4</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>

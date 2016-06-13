@@ -6,6 +6,7 @@ import com.github.api.service.UserInfoService;
 import com.github.api.service.UserTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,7 +60,10 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/addUserTask",method = RequestMethod.POST)
-    public int addUserTask(@RequestBody UserTask userTask){
-        return userTaskService.insertUserTask(userTask);
+    public int addUserTask(@RequestBody com.goodtime.entity.UserTask userTask){
+        UserTask userTask1 = new UserTask();
+        BeanUtils.copyProperties(userTask,userTask1);
+        userTask1.setTaskId(1);
+        return userTaskService.insertUserTask(userTask1);
     }
 }
