@@ -15,7 +15,7 @@
     <context:annotation-config/>
 
     <!-- service -->
-    <context:component-scan base-package="com.goodtime.user">
+    <context:component-scan base-package="com.goodtime.user,com.goodtime.entity">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

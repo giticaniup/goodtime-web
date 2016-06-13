@@ -27,11 +27,11 @@ public class UserTask implements Serializable {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")  //取日期时使用
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private String beginTime;
+    private Date beginTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT+8")  //取日期时使用
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private String endTime;
+    private Date endTime;
 
     private Integer taskScore;
 
@@ -50,7 +50,7 @@ public class UserTask implements Serializable {
     }
 
     public void setTaskName(String taskName) {
-        this.taskName = taskName;
+        this.taskName = taskName == null ? null : taskName.trim();
     }
 
     public Integer getUserId() {
@@ -66,22 +66,22 @@ public class UserTask implements Serializable {
     }
 
     public void setTaskContent(String taskContent) {
-        this.taskContent = taskContent;
+        this.taskContent = taskContent == null ? null : taskContent.trim();
     }
 
-    public String getBeginTime() {
+    public Date getBeginTime() {
         return beginTime;
     }
 
-    public void setBeginTime(String beginTime) {
+    public void setBeginTime(Date beginTime) {
         this.beginTime = beginTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

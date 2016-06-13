@@ -13,6 +13,10 @@
 </head>
 <body>
 index
+<form action="${pageContext.request.contextPath}/user/test">
+    date:<input type="text" name="date">
+    <input type="submit">
+</form>
 <a href="${pageContext.request.contextPath}/user/test">test</a><br>
 <a href="${pageContext.request.contextPath}/user/userRegister">用户注册</a>
 <br>

@@ -6,6 +6,7 @@ import com.kode.api.DemoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +32,7 @@ public class UserInfoController {
      * 测试缓存
      */
     @RequestMapping("/test")
-    public void test() {
+    public void test(@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm") Date date) {
         logger.info("this is controller");
         demoService.say();
         userInfoService.selectById(1);
@@ -44,7 +45,7 @@ public class UserInfoController {
         user.setName("lbq");
         user.setPassword("11");
         user.setUserName("lbq");
-        //userInfoService.updateUser(user);
+        userInfoService.updateUser(user);
         logger.info(userInfoService.selectById(1).toString());
     }
 
