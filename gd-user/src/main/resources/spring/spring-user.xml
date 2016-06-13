@@ -30,16 +30,6 @@
         </aop:aspect>
     </aop:config>
 
-    <!--CONVERTER-->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-                <bean class="org.springframework.http.converter.json.GsonHttpMessageConverter"/>
-            </list>
-        </property>
-    </bean>
-
     <!-- dubbo consumer -->
     <dubbo:application name="gd-user"/>
 

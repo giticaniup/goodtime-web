@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,10 +35,12 @@ public class TaskController {
     private UserTaskService userTaskService;
 
     @RequestMapping("/todoList")
-    public ModelAndView todoList() {
+    public ModelAndView todoList(HttpSession session) {
         ModelAndView mv = new ModelAndView();
         User user = userInfoService.selectById(1);
 
+        //省略登录功能，在此存储userId的值
+        session.setAttribute("userId",user.getUserId());
         mv.addObject("user", user);
         mv.setViewName("todoList");
         return mv;
@@ -53,5 +57,10 @@ public class TaskController {
             userId=1;
         }
         return userTaskService.findTaskListByUserId(userId, beginTime, endTime);
+    }
+
+    @RequestMapping(value = "/addUserTask",method = RequestMethod.POST)
+    public int addUserTask(@RequestBody UserTask userTask){
+        return userTaskService.insertUserTask(userTask);
     }
 }

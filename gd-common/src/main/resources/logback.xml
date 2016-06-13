@@ -23,13 +23,13 @@
     </appender>
 
     <logger name="com.goodtime" level="debug" additivity="false">
-        <appender-ref ref="ROLLING-FILE"/>
+<!--        <appender-ref ref="ROLLING-FILE"/>-->
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <root level="ERROR">
-        <appender-ref ref="ROLLING-FILE"/>
-        <!--<appender-ref ref="STDOUT" />-->
+    <root level="DEBUG">
+<!--        <appender-ref ref="ROLLING-FILE"/>-->
+        <appender-ref ref="STDOUT" />
     </root>
 
 </configuration>

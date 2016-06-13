@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,7 +13,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="../../css/dashboard.css" rel="stylesheet">
 </head>
@@ -94,16 +94,13 @@
                     <span class="text-muted">编程</span>
                 </div>
             </div>
-            <%----%>
-            <h2>Example of creating Modals with Twitter Bootstrap</h2>
-
             <!-- Button trigger modal -->
-            <button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#myModal">
-                Launch demo modal
+            <button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#addTask">
+                创建新任务
             </button>
 
             <!-- Modal -->
-            <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog"
+            <div class = "modal fade" id = "addTask" tabindex = "-1" role = "dialog"
                  aria-labelledby = "myModalLabel" aria-hidden = "true">
 
                 <div class = "modal-dialog">
@@ -115,21 +112,40 @@
                             </button>
 
                             <h4 class = "modal-title" id = "myModalLabel">
-                                This Modal title
+                                添加新任务
                             </h4>
                         </div>
 
                         <div class = "modal-body">
-                            Add some text here
+                            <form id="addUserTask" role="form">
+                                <div class="form-group">
+                                    <label for="taskName">任务名称</label>
+                                    <input type="text" id="taskName" name="taskName" placeholder="任务名称">
+                                </div>
+                                <div class="form-group">
+                                    <label for="taskContent">任务内容</label>
+                                    <input type="text" id="taskContent" name="taskContent" placeholder="任务内容">
+                                </div>
+                                <div class="form-group">
+                                    <label for="beginTime">开始时间</label>
+                                    <input size="16" id="beginTime" type="text" name="beginTime" value="2016-06-15 14:45" readonly
+                                           class="form_datetime">
+                                </div>
+                                <div class="form-group">
+                                    <label for="endTime">结束时间</label>
+                                    <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45" readonly
+                                           class="form_datetime">
+                                </div>
+                            </form>
                         </div>
 
                         <div class = "modal-footer">
                             <button type = "button" class = "btn btn-default" data-dismiss = "modal">
-                                Close
+                                关闭
                             </button>
 
-                            <button type = "button" class = "btn btn-primary">
-                                Submit changes
+                            <button id="addTaskButton" type = "button" class = "btn btn-primary">
+                                提交
                             </button>
                         </div>
 
@@ -137,7 +153,6 @@
                 </div><!-- /.modal-dialog -->
 
             </div><!-- /.modal -->
-            <%----%>
             <h2 class="sub-header">常规任务看板</h2>
                 <div class="table-responsive">
                     <table id="tasktable" class="table table-striped">
@@ -157,8 +172,8 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+<!-- Bootstrap core JavaScript
+================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -168,6 +183,9 @@
     <!--cookie操作-->
     <script src="../../bootstrap/js/jquery.cookie.min.js"></script>
     <script src="../../bootstrap/js/placeholder.min.js"></script>
+    <script src="../../bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="../../bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../js/JSONFormatter.js"></script>
 
     <script type="text/javascript" src="../../js/usertask.js"></script>
 </body>
