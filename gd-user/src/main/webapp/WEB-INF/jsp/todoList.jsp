@@ -128,14 +128,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="beginTime">开始时间</label>
-                                    <input size="16" id="beginTime" type="text" name="beginTime" value="2016-06-15 14:45" readonly
-                                           class="form_datetime">
+                                    <input id="beginTime" type="text" name="beginTime" value="2016-06-12 10:10">
                                 </div>
-                                <div class="form-group">
+<%--                                <div class="form-group">
                                     <label for="endTime">结束时间</label>
                                     <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45" readonly
                                            class="form_datetime">
-                                </div>
+                                </div>--%>
                             </form>
                         </div>
 

@@ -6,10 +6,8 @@ import com.github.api.service.UserInfoService;
 import com.github.api.service.UserTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,7 +38,7 @@ public class TaskController {
         User user = userInfoService.selectById(1);
 
         //省略登录功能，在此存储userId的值
-        session.setAttribute("userId",user.getUserId());
+        session.setAttribute("userId", user.getUserId());
         mv.addObject("user", user);
         mv.setViewName("todoList");
         return mv;
@@ -51,19 +49,17 @@ public class TaskController {
     public List<UserTask> getUserTask(HttpSession session, String beginTime, String endTime) {
         //从session中获取当前用户信息
         Integer userId;
-        if(session.getAttribute("userid")!=null){
-            userId= (Integer) session.getAttribute("userid");
-        }else {
-            userId=1;
+        if (session.getAttribute("userid") != null) {
+            userId = (Integer) session.getAttribute("userid");
+        } else {
+            userId = 1;
         }
         return userTaskService.findTaskListByUserId(userId, beginTime, endTime);
     }
 
-    @RequestMapping(value = "/addUserTask",method = RequestMethod.POST)
-    public int addUserTask(@RequestBody com.goodtime.entity.UserTask userTask){
-        UserTask userTask1 = new UserTask();
-        BeanUtils.copyProperties(userTask,userTask1);
-        userTask1.setTaskId(1);
-        return userTaskService.insertUserTask(userTask1);
+    @RequestMapping(value = "/addUserTask")
+    public int addUserTask(UserTask userTask) {
+        logger.info(userTask.toString());
+        return userTaskService.insertUserTask(userTask);
     }
 }
