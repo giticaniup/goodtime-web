@@ -4,12 +4,14 @@ import com.github.api.entity.User;
 import com.github.api.entity.UserTask;
 import com.github.api.service.UserInfoService;
 import com.github.api.service.UserTaskService;
+import com.goodtime.base.result.BaseResult;
+import com.goodtime.user.enums.UserCodeEnums;
+import com.goodtime.user.results.UserResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,12 +37,14 @@ public class TaskController {
     @RequestMapping("/todoList")
     public ModelAndView todoList(HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        User user = userInfoService.selectById(1);
-
-        //省略登录功能，在此存储userId的值
-        session.setAttribute("userId", user.getUserId());
-        mv.addObject("user", user);
-        mv.setViewName("todoList");
+        Integer userId = (Integer) session.getAttribute("userId");
+        if(userId == null){
+            mv.setViewName("userLogin");
+        }else {
+            User user = userInfoService.selectById(userId);
+            mv.addObject("user", user);
+            mv.setViewName("todoList");
+        }
         return mv;
     }
 
@@ -58,8 +62,26 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/addUserTask")
-    public int addUserTask(UserTask userTask) {
-        logger.info(userTask.toString());
-        return userTaskService.insertUserTask(userTask);
+    @ResponseBody
+    public BaseResult addUserTask(HttpSession session, UserTask userTask) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            return new UserResult(UserCodeEnums.USER_NOTLOGIN);
+        }
+        userTask.setUserId(userId);
+        try {
+            userTask.checkParams();
+            int result = userTaskService.insertUserTask(userTask);
+            if (result != 1) {
+                return new UserResult(UserCodeEnums.ADDUSER_ERROR);
+            }
+            return new BaseResult();
+        } catch (IllegalArgumentException ie) {
+            logger.error("addUserTask IllegalArgumentException,param={},ie={}", userTask, ie);
+            return new UserResult(UserCodeEnums.PARAM_ILLEGAL);
+        } catch (Exception e) {
+            logger.error("addUserTask Exception,param={},info={}", userTask, e);
+            return new UserResult(UserCodeEnums.SYSTEM_ERROR);
+        }
     }
 }

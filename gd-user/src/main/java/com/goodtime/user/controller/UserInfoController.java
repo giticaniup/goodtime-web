@@ -3,13 +3,16 @@ package com.goodtime.user.controller;
 import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
 import com.kode.api.DemoService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 /**
  * 用户控制Controller类
@@ -48,8 +51,25 @@ public class UserInfoController {
         logger.info(userInfoService.selectById(1).toString());
     }
 
-    @RequestMapping("userRegister")
+    @RequestMapping("/loginPage")
     public String register() {
-        return "userRegister";
+        return "userLogin";
+    }
+
+    @RequestMapping("/userLogin")
+    public boolean userLogin(HttpSession session,String userId, String password){
+        Pattern pattern = Pattern.compile("[0-9]+");
+        if(!pattern.matcher(userId).matches()) {
+            return false;
+        }
+        if(StringUtils.isEmpty(password)){
+            return false;
+        }
+        User user = userInfoService.loginIn(Integer.valueOf(userId),password);
+        if(user != null){
+            session.setAttribute("userId",user.getUserId());
+            return true;
+        }
+        return false;
     }
 }

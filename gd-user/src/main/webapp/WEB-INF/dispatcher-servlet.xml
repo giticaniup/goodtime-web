@@ -47,9 +47,7 @@
             p:suffix=".jsp"/>
     <!-- 配置直接转发的页面 -->
     <!-- 可以直接相应转发的页面, 而无需再经过 Handler 的方法.  -->
-    <!--
-        <mvc:view-controller path="/success" view-name="success"/>
-    -->
+        <mvc:view-controller path="/userLogin" view-name="userLogin"/>
     <!-- 配置 MultipartResolver -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

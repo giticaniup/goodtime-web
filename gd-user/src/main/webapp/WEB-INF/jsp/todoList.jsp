@@ -127,14 +127,25 @@
                                     <input type="text" id="taskContent" name="taskContent" placeholder="任务内容">
                                 </div>
                                 <div class="form-group">
-                                    <label for="beginTime">开始时间</label>
-                                    <input id="beginTime" type="text" name="beginTime" value="2016-06-12 10:10">
+                                    <label for="taskScore">任务内容</label>
+                                    <input type="number" id="taskScore" name="taskScore" placeholder="任务分数">
                                 </div>
-<%--                                <div class="form-group">
-                                    <label for="endTime">结束时间</label>
-                                    <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45" readonly
-                                           class="form_datetime">
-                                </div>--%>
+                                <div class="form-group">
+                                    <label for="beginTime">开始时间</label>
+                                    <input size="16" id="beginTime" type="text" name="beginTime" value="2016-06-15 14:45"
+                                            class="form_datetime">
+                                </div>
+                                <div class="form-group">
+                                <label for="endTime">结束时间</label>
+                                <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45"
+                                       class="form_datetime">
+                                </div>
+                                <div hidden="true" id="addUserTaskWarning" class="alert alert-warning">
+                                    <a href="#" class="close" onclick="$('#addUserTaskWarning').hide()">
+                                        &times;
+                                    </a>
+                                    <strong>提示：</strong>参数输入错误
+                                </div>
                             </form>
                         </div>
 
@@ -143,7 +154,7 @@
                                 关闭
                             </button>
 
-                            <button id="addTaskButton" type = "button" class = "btn btn-primary">
+                            <button id="addTaskButton" type = "button" class = "btn btn-primary" to>
                                 提交
                             </button>
                         </div>
