@@ -2,6 +2,9 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
+import com.goodtime.base.result.BaseResult;
+import com.goodtime.user.enums.UserCodeEnums;
+import com.goodtime.user.results.UserResult;
 import com.kode.api.DemoService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -9,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -57,19 +61,20 @@ public class UserInfoController {
     }
 
     @RequestMapping("/userLogin")
-    public boolean userLogin(HttpSession session,String userId, String password){
+    @ResponseBody
+    public BaseResult userLogin(HttpSession session, String userId, String password){
         Pattern pattern = Pattern.compile("[0-9]+");
         if(!pattern.matcher(userId).matches()) {
-            return false;
+            return new UserResult(UserCodeEnums.USER_NOTLOGIN);
         }
         if(StringUtils.isEmpty(password)){
-            return false;
+            return new UserResult(UserCodeEnums.USER_NOTLOGIN);
         }
         User user = userInfoService.loginIn(Integer.valueOf(userId),password);
         if(user != null){
             session.setAttribute("userId",user.getUserId());
-            return true;
+            return new BaseResult();
         }
-        return false;
+        return new UserResult(UserCodeEnums.USER_NOTLOGIN);
     }
 }

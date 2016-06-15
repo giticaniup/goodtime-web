@@ -7,7 +7,7 @@ function userLogin() {
     var password = $("#inputPassword").val();
     $.post(basePath+"/user/userLogin", {userId: userId, password: password},
         function (result) {
-            if (result == 'true')  window.location.href = basePath+"/task/todoList";
+            if (result.errorCode == 0 )  window.location.href = basePath+"/task/todoList";
             else {
                 $("#userLogin").show();
 /*                $('#dd').dialog({
