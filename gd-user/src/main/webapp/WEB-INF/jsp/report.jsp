@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>任务报告界面</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
@@ -134,12 +134,12 @@
                                 <div class="form-group">
                                     <label for="beginTime">开始时间</label>
                                     <input size="16" id="beginTime" type="text" name="beginTime" value="2016-06-15 14:45"
-                                            class="form_datetime">
+                                           class="form_datetime">
                                 </div>
                                 <div class="form-group">
-                                <label for="endTime">结束时间</label>
-                                <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45"
-                                       class="form_datetime">
+                                    <label for="endTime">结束时间</label>
+                                    <input size="16" id="endTime" type="text" name="endTime" value="2016-06-15 14:45"
+                                           class="form_datetime">
                                 </div>
                                 <div hidden="true" id="addUserTaskWarning" class="alert alert-warning">
                                     <a href="#" class="close" onclick="$('#addUserTaskWarning').hide()">
@@ -165,39 +165,39 @@
 
             </div><!-- /.modal -->
             <h2 class="sub-header">常规任务看板</h2>
-                <div class="table-responsive">
-                    <table id="tasktable" class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>任务Id</th>
-                            <th>任务名称</th>
-                            <th>任务内容</th>
-                            <th>开始日期</th>
-                            <th>结束日期</th>
-                        </tr>
-                        </thead>
-                        <tbody id="tasktBody">
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-responsive">
+                <table id="tasktable" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>任务Id</th>
+                        <th>任务名称</th>
+                        <th>任务内容</th>
+                        <th>开始日期</th>
+                        <th>结束日期</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tasktBody">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
-    <!--cookie操作-->
-    <script src="../../bootstrap/js/jquery.cookie.min.js"></script>
-    <script src="../../bootstrap/js/placeholder.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap-datetimepicker.js"></script>
-    <script src="../../bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="../../js/JSONFormatter.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+<!--cookie操作-->
+<script src="../../bootstrap/js/jquery.cookie.min.js"></script>
+<script src="../../bootstrap/js/placeholder.min.js"></script>
+<script src="../../bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script src="../../bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../../js/JSONFormatter.js"></script>
 
-    <script type="text/javascript" src="../../js/usertask.js"></script>
+<script type="text/javascript" src="../../js/usertask.js"></script>
 </body>
 </html>

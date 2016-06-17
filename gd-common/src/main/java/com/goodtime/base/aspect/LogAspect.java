@@ -1,9 +1,9 @@
 package com.goodtime.base.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
@@ -11,14 +11,12 @@ import java.util.Arrays;
  * 日志类
  * Created by zhongcy on 2016/5/9.
  */
-@Component("logAspect")
+@Aspect
 public class LogAspect {
 
     private final static Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     public Object around(ProceedingJoinPoint point) throws Throwable {
-
-        System.out.println("enter aop");
 
         String methodName = point.getSignature().getName();
 

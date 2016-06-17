@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 测试类
  * Created by zhongcy on 2016/6/14.
  */
-@Controller
+@Controller()
 @RequestMapping("/test")
 public class TestController {
 
@@ -22,5 +22,13 @@ public class TestController {
     @RequestMapping("/testDate")
     public void testDate(UserTask userTask) {
         logger.error(userTask.toString());
+    }
+
+    public void aopTest(){
+        System.out.println("aopTest");
+    }
+
+    public static void testStatic(){
+        System.out.println("static");
     }
 }

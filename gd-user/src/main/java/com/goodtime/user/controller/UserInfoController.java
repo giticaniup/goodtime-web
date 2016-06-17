@@ -63,6 +63,7 @@ public class UserInfoController {
     @RequestMapping("/userLogin")
     @ResponseBody
     public BaseResult userLogin(HttpSession session, String userId, String password){
+        logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
         if(!pattern.matcher(userId).matches()) {
             return new UserResult(UserCodeEnums.USER_NOTLOGIN);

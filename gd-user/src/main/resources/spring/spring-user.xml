@@ -1,22 +1,20 @@
 <?xml version= "1.0" encoding ="UTF-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-
-
-	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context-3.1.xsd
-	http://www.springframework.org/schema/aop
-	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd" default-lazy-init ="true">
 
     <context:annotation-config/>
 
     <!-- service -->
     <context:component-scan base-package="com.goodtime.user">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--AOP-->
@@ -25,7 +23,7 @@
     <aop:config>
         <aop:aspect id="received" ref="logAspect">
             <aop:pointcut id="receivedService"
-                          expression="execution(* com.goodtime.user.controller.*.*(..))"/>
+                          expression="execution(* com.goodtime.user.controller..*.*(..))"/>
             <aop:around pointcut-ref="receivedService" method="around"/>
         </aop:aspect>
     </aop:config>
@@ -38,4 +36,5 @@
     <dubbo:reference id="hellodubbo" interface="com.kode.api.DemoService"/>
     <dubbo:reference id="userInfoService" interface="com.github.api.service.UserInfoService"/>
     <dubbo:reference id="userTaskService" interface="com.github.api.service.UserTaskService"/>
+
 </beans>
