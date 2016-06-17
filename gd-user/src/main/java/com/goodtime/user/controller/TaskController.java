@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,10 +54,10 @@ public class TaskController {
     public List<UserTask> getUserTask(HttpSession session, String beginTime, String endTime) {
         //从session中获取当前用户信息
         Integer userId;
-        if (session.getAttribute("userid") != null) {
-            userId = (Integer) session.getAttribute("userid");
+        if (session.getAttribute("userId") != null) {
+            userId = (Integer) session.getAttribute("userId");
         } else {
-            userId = 1;
+            return new ArrayList<>();
         }
         return userTaskService.findTaskListByUserId(userId, beginTime, endTime);
     }
