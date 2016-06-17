@@ -50,9 +50,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="${pageContext.request.contextPath}/task/todoList">Overview <span class="sr-only">(current)
+                <li class="active"><a href="${pageContext.request.contextPath}/task/todoList">Overview <span
+                        class="sr-only">(current)
                 </span></a></li>
-                <li class="active"><a href="${pageContext.request.contextPath}/task/report">Reports <span class="sr-only">(current)</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/task/report">Reports <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Analytics</a></li>
                 <li><a href="#">Export</a></li>
             </ul>
