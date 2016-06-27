@@ -47,7 +47,8 @@
     <!-- 配置直接转发的页面 -->
     <!-- 可以直接相应转发的页面, 而无需再经过 Handler 的方法.  -->
         <mvc:view-controller path="/userLogin" view-name="userLogin"/>
-        <mvc:view-controller path="/task/report" view-name="report"/>
+        <mvc:view-controller path="/task/diary" view-name="diary"/>
+        <mvc:view-controller path="/diary/addDiary" view-name="addDiary"/>
         <mvc:view-controller path="index" view-name="index"/>
     <!-- 配置 MultipartResolver -->
     <bean id="multipartResolver"

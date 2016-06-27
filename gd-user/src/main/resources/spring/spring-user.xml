@@ -36,5 +36,6 @@
     <dubbo:reference id="hellodubbo" interface="com.kode.api.DemoService"/>
     <dubbo:reference id="userInfoService" interface="com.github.api.service.UserInfoService"/>
     <dubbo:reference id="userTaskService" interface="com.github.api.service.UserTaskService"/>
+    <dubbo:reference id="userDiaryService" interface="com.github.api.service.UserDiaryService"/>
 
 </beans>
