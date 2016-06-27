@@ -50,7 +50,7 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/task/todoList">任务看板 <span
                         class="sr-only">(current)
                 </span></a></li>
-                <li><a href="${pageContext.request.contextPath}/task/diary">日志
+                <li><a href="${pageContext.request.contextPath}/diary/diaryList">日志
                     <span class="sr-only">(current)</span></a></li>
             </ul>
         </div>

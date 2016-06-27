@@ -43,7 +43,16 @@
         </div>
     </div>
 </nav>
-
+<div class="blog-masthead">
+    <div class="container">
+        <nav class="blog-nav">
+            <a class="blog-nav-item active" href="#">首页</a>
+            <a class="blog-nav-item" href="/diary/addDiary">新的日志</a>
+            <a class="blog-nav-item" href="#">管理</a>
+            <a class="blog-nav-item" href="#">关于</a>
+        </nav>
+    </div>
+</div>
 <div class="container">
 
     <div class="blog-header">

@@ -54,11 +54,12 @@ public class DiaryController {
 
     @RequestMapping("/getDiary")
     @ResponseBody
-    public List<UserDiary> getDiary(HttpSession session) {
+    public List<UserDiary> getDiary(HttpSession session, int pageNum) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
-            return userDiaryService.findDiaryByUserId(1, 1, 1);
+            int PAGE_SIZE = 10;
+            return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
         } else {
             return new ArrayList<>();
         }
