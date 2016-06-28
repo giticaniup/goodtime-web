@@ -31,6 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="/task/todoList">任务看板</a>
             <a class="navbar-brand" href="#">日志看板</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
@@ -56,36 +57,25 @@
 <div class="container">
 
     <div class="blog-header">
-        <h1 class="blog-title">${user.userName}的个人日志</h1>
+        <h1 class="blog-title">${user.userName}
+            <small>的个人日志</small>
+        </h1>
         <p class="lead blog-description">下马饮君酒，问君和所之。君言志四海，天涯若比邻。</p>
     </div>
 
     <div class="row">
 
-        <div class="col-sm-8 blog-main" id="blogMain">
+        <div class="col-sm-8 blog-main" >
 
-
-            <div class="blog-post">
-                <h2 class="blog-post-title">Another blog post</h2>
-                <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-
-                <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                <blockquote>
-                    <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                </blockquote>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            </div><!-- /.blog-post -->
-
+            <div id="blogMain">
+            </div>
             <nav>
                 <ul class="pager">
                     <li><a id="previousPage" href="#">Previous</a></li>
                     <li><a id="nextPage" href="#">Next</a></li>
                 </ul>
             </nav>
-
         </div><!-- /.blog-main -->
-
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>关于</h4>

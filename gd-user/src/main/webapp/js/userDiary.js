@@ -8,7 +8,7 @@ function loadTaskInfo() {
         type: "get",
         url: basePath + "/diary/getDiary",
         data: {
-            pageNum: pageNum,
+            pageNum: pageNum
         },
         success: function (data) {
             if (data != null) {
@@ -23,7 +23,7 @@ function analyJson(data) {
     if (data.length > 0) {
         for (var i = 0; i < data.length; i++) {
             var append = "<div class=\"blog-post\"> <h2 class=\"blog-post-title\">"+data[i].title+"</h2> " +
-                "<p class=\"blog-post-meta\">"+data[i].createTime+ "by <a href=\"#\">"+data[i].creator+"</a></p>" +
+                "<p class=\"blog-post-meta\">"+data[i].createTime+
                 "<p>"+data[i].content+"</p> </div>";
             $("#blogMain").append(append);
         }

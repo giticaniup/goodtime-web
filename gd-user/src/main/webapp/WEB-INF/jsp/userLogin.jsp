@@ -16,35 +16,36 @@
 </head>
 <body>
 
-    <input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
-    <div class="container">
+<input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
+<div class="container">
 
-      <form class="form-signin">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">欢迎使用GoodTime</h2>
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputUserId" class="sr-only">Email address</label>
         <input type="id" id="inputUserId" class="form-control" placeholder="UserId" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
         </div>
-          <div hidden="true" id="userLogin" class="alert alert-warning">
-              <a href="#" class="close" onclick="$('#userLogin').hide()">
-                  &times;
-              </a>
-              <strong>提示：</strong>用户名或密码错误
-          </div>
+        <div hidden="true" id="userLogin" class="alert alert-warning">
+            <a href="#" class="close" onclick="$('#userLogin').hide()">
+                &times;
+            </a>
+            <strong>提示：</strong>用户名或密码错误
+        </div>
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick="userLogin()">Sign in</button>
-      </form>
+    </form>
 
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../bootstrap/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
-    <script type="text/javascript" src="../../js/userLogin.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../bootstrap/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="../../js/userLogin.js"></script>
 </body>
 </html>
