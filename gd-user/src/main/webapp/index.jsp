@@ -11,6 +11,7 @@
 <head>
     <title>index</title>
     <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/goodtime.js"></script>
 </head>
 <body>
 index
@@ -23,6 +24,13 @@ index
 <form id="testDate" action="${pageContext.request.contextPath}/test/testDate">
     date:<input type="text" name="beginTime" value="2016-12-12 10:10">
     <input id="submitDate" type="button">
+</form>
+<form id="testMapForm" action="index/testMap">
+    id:<input name="id" type="text"><br>
+    name:<input name="name" type="text"><br>
+    <input type="submit" value="测试map">
+    <input type="button" id="testMap" value="Ajax测试">
+    <input type="button" id="testJsonMap" value="Json测试">
 </form>
 <script>
     $("#submitDate").click(function () {
@@ -39,6 +47,38 @@ index
             }
         )
     });
+
+    $("#testMap").click(function(){
+        ajaxRequest("${pageContext.request.contextPath}/index/testMap","post",$("#testMapForm").serialize(),null)
+    });
+/*        $.ajax({
+            type: "post",
+            url: "${pageContext.request.contextPath}/index/testMap",
+            data:$("#testMapForm").serialize(),
+            success: function (data) {
+                if (data != null) {
+                    alert(data);
+                } else {
+                    alert("没有权限！");
+                }
+            }
+        });
+    });*/
+
+    $("#testJsonMap").click(function(){
+        $.ajax({
+            type:"post",
+            url:"${pageContext.request.contextPath}/index/testJsonMap",
+            data: JSON.stringify($("#testMapForm").serializeObject()),
+            contentType: "application/json; charset=utf-8",
+            success:function(data){
+                alert(data);
+            },
+            error:function(){
+                alert("error");
+            }
+        });
+    })
 </script>
 </body>
 </html>
