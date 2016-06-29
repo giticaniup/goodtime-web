@@ -83,7 +83,7 @@
             </div>
             <div class="sidebar-module">
                 <h4>Archives</h4>
-                <ol class="list-unstyled">
+                <ol class="list-unstyled" id="ol_date">
                     <li><a href="#">March 2014</a></li>
                     <li><a href="#">February 2014</a></li>
                     <li><a href="#">January 2014</a></li>
