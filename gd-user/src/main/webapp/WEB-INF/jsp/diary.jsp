@@ -22,6 +22,8 @@
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <input type="hidden" id="basePath" value="${pageContext.request.contextPath}"/>
+    <input type="hidden" id="year" value="${year}"/>
+    <input type="hidden" id="month" value="${month}"/>
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"

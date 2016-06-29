@@ -1,12 +1,22 @@
 var basePath = $("#basePath").val();
+var domYear = $("#year").val();
+var domMonth = $("#month").val();
+
 var pageNum = 1;
 
 $(document).ready(loadTaskInfo());
 
 function loadTaskInfo() {
+    var url;
+    if (domYear == null || domYear == "" || domMonth == null || domMonth == "") {
+        url = basePath + "/diary/getDiary";
+    } else {
+        url = basePath + "/diary/getDiary/" + domYear + "/" + domMonth;
+    }
+
     $.ajax({
         type: "get",
-        url: basePath + "/diary/getDiary",
+        url: url,
         data: {
             pageNum: pageNum
         },
@@ -22,9 +32,9 @@ function loadTaskInfo() {
     var today = new Date();
     var year = today.getFullYear();
     var month = today.getMonth();
-    for(var i=0;i<10;i++){
-        if(month>1) {
-            var append = "<button id='test' type='button' class='btn btn-link'>"+year + "年" + (month--) + "月" +"</button>";
+    for (var i = 0; i < 10; i++) {
+        if (month > 1) {
+            var append = "<li><a href='" + basePath + "/diary/" + year + "/" + month + "'>" + year + "年" + (month--) + "月" + "</a></li>";
             $("#ol_date").append(append);
         }
     }
@@ -32,9 +42,9 @@ function loadTaskInfo() {
 function analyJson(data) {
     if (data.length > 0) {
         for (var i = 0; i < data.length; i++) {
-            var append = "<div class=\"blog-post\"> <h2 class=\"blog-post-title\">"+data[i].title+"</h2> " +
-                "<p class=\"blog-post-meta\">"+data[i].createTime+
-                "<p><pre>"+data[i].content+"</pre></p> </div>";
+            var append = "<div class=\"blog-post\"> <h2 class=\"blog-post-title\">" + data[i].title + "</h2> " +
+                "<p class=\"blog-post-meta\">" + data[i].createTime +
+                "<p><pre>" + data[i].content + "</pre></p> </div>";
             $("#blogMain").append(append);
         }
     }
@@ -46,8 +56,4 @@ $("#previousPage").click(function () {
 });
 $("#nextPage").click(function () {
     pageNum++;
-});
-
-$('.btn btn-link').click(function(){
-    //ajaxRequest(basePath + "/year/getDiary");
 });

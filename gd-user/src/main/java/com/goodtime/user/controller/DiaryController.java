@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 日志处理器
@@ -53,7 +54,7 @@ public class DiaryController {
         return "redirect:/diary/diaryList";
     }
 
-    @RequestMapping("/getDiary")
+    @RequestMapping("/")
     @ResponseBody
     public List<UserDiary> getDiary(HttpSession session, int pageNum) {
         //从session中获取当前用户信息
@@ -67,7 +68,9 @@ public class DiaryController {
     }
 
     @RequestMapping("/{year}/{month}")
-    public String getDiaryByDate(@PathVariable("year") int year, @PathVariable("month") int month){
-        return null;
+    public String getDiaryByDate(@PathVariable("year") int year, @PathVariable("month") int month,Map<String,Integer> map){
+        map.put("year",year);
+        map.put("month",month);
+        return "userDiary";
     }
 }
