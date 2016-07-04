@@ -9,9 +9,9 @@ $(document).ready(loadTaskInfo());
 function loadTaskInfo() {
     var url;
     if (domYear == null || domYear == "" || domMonth == null || domMonth == "") {
-        url = basePath + "/diary/getDiary";
+        url = basePath + "/diary/";
     } else {
-        url = basePath + "/diary/getDiary/" + domYear + "/" + domMonth;
+        url = basePath + "/diary/" + domYear + "/" + domMonth;
     }
 
     $.ajax({
