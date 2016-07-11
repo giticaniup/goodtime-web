@@ -10,9 +10,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Bootstrap core CSS -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../../css/signin.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
 </head>
 <body>
 
@@ -44,8 +44,8 @@
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../bootstrap/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
-<script type="text/javascript" src="../../js/userLogin.js"></script>
+<script src="/bootstrap/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="/js/userLogin.js"></script>
 </body>
 </html>

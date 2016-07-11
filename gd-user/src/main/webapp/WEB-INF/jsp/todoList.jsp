@@ -7,15 +7,15 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
     <title>任务看板</title>
 
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../../css/dashboard.css" rel="stylesheet">
+    <link href="/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -175,14 +175,14 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
     <!--cookie操作-->
-    <script src="../../bootstrap/js/jquery.cookie.min.js"></script>
-    <script src="../../bootstrap/js/placeholder.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap-datetimepicker.js"></script>
-    <script src="../../bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="../../js/JSONFormatter.js"></script>
+    <script src="/bootstrap/js/jquery.cookie.min.js"></script>
+    <script src="/bootstrap/js/placeholder.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="/js/JSONFormatter.js"></script>
 
-    <script type="text/javascript" src="../../js/usertask.js"></script>
+    <script type="text/javascript" src="/js/usertask.js"></script>
 </body>
 </html>

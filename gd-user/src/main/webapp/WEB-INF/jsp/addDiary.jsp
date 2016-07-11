@@ -11,7 +11,7 @@
     <title>新增日志</title>
     <!-- Bootstrap core CSS -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 </head>
 <body>
 <form role="form" action="/diary/saveDiary">
@@ -25,6 +25,6 @@
     <button id="fat-btn" class="btn btn-primary" type="submit">保存
     </button>
 </form>
-<script src="../../js/jquery-1.12.3.min.js"></script>
+<script src="/js/jquery-1.12.3.min.js"></script>
 </body>
 </html>
