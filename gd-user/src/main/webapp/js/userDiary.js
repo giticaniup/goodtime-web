@@ -31,10 +31,10 @@ function loadTaskInfo() {
 
     var today = new Date();
     var year = today.getFullYear();
-    var month = today.getMonth();
+    var month = today.getMonth()+1;
     for (var i = 0; i < 10; i++) {
         if (month > 1) {
-            var append = "<li><a href='" + basePath + "/diary/" + year + "/" + month + "'>" + year + "年" + (month--) + "月" + "</a></li>";
+            var append = "<li><a href='" + basePath + "/diary/diaryList/" + year + "/" + month + "'>" + year + "年" + (month--) + "月" + "</a></li>";
             $("#ol_date").append(append);
         }
     }

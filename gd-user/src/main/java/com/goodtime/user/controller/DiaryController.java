@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 日志处理器
@@ -24,6 +23,7 @@ import java.util.Map;
 @RequestMapping("/diary")
 public class DiaryController {
 
+    private static final int PAGE_SIZE = 10;
     @Autowired
     private UserInfoService userInfoService;
 
@@ -37,6 +37,23 @@ public class DiaryController {
         if (userId != null) {
             User user = userInfoService.selectById(userId);
             mv.addObject("user", user);
+            mv.setViewName("diary");
+            return mv;
+        } else {
+            mv.setViewName("userLogin");
+            return mv;
+        }
+    }
+
+    @RequestMapping("/diaryList/{year}/{month}")
+    public ModelAndView diaryList(HttpSession session, @PathVariable("year") String year, @PathVariable("month") String month) {
+        ModelAndView mv = new ModelAndView();
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId != null) {
+            User user = userInfoService.selectById(userId);
+            mv.addObject("user", user);
+            mv.addObject("year", year);
+            mv.addObject("month", month);
             mv.setViewName("diary");
             return mv;
         } else {
@@ -60,7 +77,6 @@ public class DiaryController {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
-            int PAGE_SIZE = 10;
             return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
         } else {
             return new ArrayList<>();
@@ -68,9 +84,15 @@ public class DiaryController {
     }
 
     @RequestMapping("/{year}/{month}")
-    public String getDiaryByDate(@PathVariable("year") int year, @PathVariable("month") int month,Map<String,Integer> map){
-        map.put("year",year);
-        map.put("month",month);
-        return "userDiary";
+    @ResponseBody
+    public List<UserDiary> getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
+            ("month") Integer month) {
+        //从session中获取当前用户信息
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId != null) {
+            return userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month);
+        } else {
+            return new ArrayList<>();
+        }
     }
 }
