@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 日志处理器
@@ -46,19 +47,17 @@ public class DiaryController {
     }
 
     @RequestMapping("/diaryList/{year}/{month}")
-    public ModelAndView diaryList(HttpSession session, @PathVariable("year") String year, @PathVariable("month") String month) {
-        ModelAndView mv = new ModelAndView();
+    public String diaryList(HttpSession session, @PathVariable("year") String year, @PathVariable("month") String
+            month, Map<String,Object> map) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
             User user = userInfoService.selectById(userId);
-            mv.addObject("user", user);
-            mv.addObject("year", year);
-            mv.addObject("month", month);
-            mv.setViewName("diary");
-            return mv;
+            map.put("user", user);
+            map.put("year", year);
+            map.put("month", month);
+            return "diary";
         } else {
-            mv.setViewName("userLogin");
-            return mv;
+            return "userLogin";
         }
     }
 
