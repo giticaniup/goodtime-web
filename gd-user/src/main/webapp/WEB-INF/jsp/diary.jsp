@@ -95,7 +95,7 @@
 </div><!-- /.container -->
 
 <footer class="blog-footer">
-    <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p><a href="https://github.com/giticaniup/goodtime2.git">工程源码</a> by 钟乘永.</p>
     <p>
         <a href="#">返回顶部</a>
     </p>
