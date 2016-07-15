@@ -2,6 +2,8 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.entity.UserDiary;
+import com.github.api.enums.UserCodeEnums;
+import com.github.api.result.FindDiaryResult;
 import com.github.api.service.UserDiaryService;
 import com.github.api.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,26 +74,26 @@ public class DiaryController {
 
     @RequestMapping("/")
     @ResponseBody
-    public List<UserDiary> getDiary(HttpSession session, int pageNum) {
+    public FindDiaryResult getDiary(HttpSession session, int pageNum) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
             return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
         } else {
-            return new ArrayList<>();
+            return new FindDiaryResult(UserCodeEnums.USER_NOTLOGIN);
         }
     }
 
     @RequestMapping("/{year}/{month}")
     @ResponseBody
-    public List<UserDiary> getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
+    public FindDiaryResult getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
             ("month") Integer month) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
             return userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month);
         } else {
-            return new ArrayList<>();
+            return new FindDiaryResult(UserCodeEnums.USER_NOTLOGIN);
         }
     }
 }

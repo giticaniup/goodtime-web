@@ -73,8 +73,14 @@
             </div>
             <nav>
                 <ul class="pager">
-                    <li><a id="previousPage" href="#">Previous</a></li>
-                    <li><a id="nextPage" href="#">Next</a></li>
+                    <button id="previousPage" type="button" class="btn btn-link">上一页</button>
+                    <button id="nextPage" type="button" class="btn btn-link">下一页</button>
+                    <div hidden="true" id="end_page_warning" class="alert alert-warning">
+                        <a href="#" class="close" onclick="$('#end_page_warning').hide()">
+                            &times;
+                        </a>
+                        <strong>提示：</strong>已经是最后一页
+                    </div>
                 </ul>
             </nav>
         </div><!-- /.blog-main -->

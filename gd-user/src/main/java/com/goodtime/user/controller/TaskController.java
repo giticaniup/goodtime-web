@@ -2,10 +2,10 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.entity.UserTask;
+import com.github.api.enums.UserCodeEnums;
 import com.github.api.service.UserInfoService;
 import com.github.api.service.UserTaskService;
 import com.goodtime.base.result.BaseResult;
-import com.goodtime.user.enums.UserCodeEnums;
 import com.goodtime.user.results.UserResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +39,9 @@ public class TaskController {
     public ModelAndView todoList(HttpSession session) {
         ModelAndView mv = new ModelAndView();
         Integer userId = (Integer) session.getAttribute("userId");
-        if(userId == null){
+        if (userId == null) {
             mv.setViewName("userLogin");
-        }else {
+        } else {
             User user = userInfoService.selectById(userId);
             mv.addObject("user", user);
             mv.setViewName("todoList");

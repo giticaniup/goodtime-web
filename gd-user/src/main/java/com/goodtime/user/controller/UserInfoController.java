@@ -1,9 +1,9 @@
 package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
+import com.github.api.enums.UserCodeEnums;
 import com.github.api.service.UserInfoService;
 import com.goodtime.base.result.BaseResult;
-import com.goodtime.user.enums.UserCodeEnums;
 import com.goodtime.user.results.UserResult;
 import com.kode.api.DemoService;
 import org.apache.commons.lang3.StringUtils;
@@ -62,18 +62,18 @@ public class UserInfoController {
 
     @RequestMapping("/userLogin")
     @ResponseBody
-    public BaseResult userLogin(HttpSession session, String userId, String password){
+    public BaseResult userLogin(HttpSession session, String userId, String password) {
         logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
-        if(!pattern.matcher(userId).matches()) {
+        if (!pattern.matcher(userId).matches()) {
             return new UserResult(UserCodeEnums.USER_NOTLOGIN);
         }
-        if(StringUtils.isEmpty(password)){
+        if (StringUtils.isEmpty(password)) {
             return new UserResult(UserCodeEnums.USER_NOTLOGIN);
         }
-        User user = userInfoService.loginIn(Integer.valueOf(userId),password);
-        if(user != null){
-            session.setAttribute("userId",user.getUserId());
+        User user = userInfoService.loginIn(Integer.valueOf(userId), password);
+        if (user != null) {
+            session.setAttribute("userId", user.getUserId());
             return new BaseResult();
         }
         return new UserResult(UserCodeEnums.USER_NOTLOGIN);

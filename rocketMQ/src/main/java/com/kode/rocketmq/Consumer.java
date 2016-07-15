@@ -30,11 +30,7 @@ public class Consumer {
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
             for (MessageExt msg : msgs) {
                 String s = new String(msg.getBody());
-                try {
-                    System.out.println("解密后的消息为:" + new String(new BASE64Decoder().decodeBuffer(s)));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("解密后的消息为:" + s);
             }
             System.out.println(Thread.currentThread().getName() + " Receive New Messages: " + msgs);
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
