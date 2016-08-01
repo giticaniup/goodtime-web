@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Date;
+import java.util.Map;
+
 /**
  * 测试类
  * Created by zhongcy on 2016/6/14.
@@ -30,5 +33,11 @@ public class TestController {
 
     public static void testStatic(){
         System.out.println("static");
+    }
+
+    @RequestMapping("/test")
+    public String testDate(Map<String,Date> map){
+        map.put("date",new Date());
+        return "test";
     }
 }

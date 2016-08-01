@@ -225,6 +225,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+        </dependency>
     </dependencies>
 <!--    <build>
         <sourceDirectory>src/main/java</sourceDirectory>
