@@ -2,8 +2,7 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.entity.UserDiary;
-import com.github.api.enums.UserCodeEnums;
-import com.github.api.result.FindDiaryResult;
+import com.github.api.result.FindResult;
 import com.github.api.service.UserDiaryService;
 import com.github.api.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +25,7 @@ import java.util.Map;
 public class DiaryController {
 
     private static final int PAGE_SIZE = 10;
+
     @Autowired
     private UserInfoService userInfoService;
 
@@ -50,7 +49,7 @@ public class DiaryController {
 
     @RequestMapping("/diaryList/{year}/{month}")
     public String diaryList(HttpSession session, @PathVariable("year") String year, @PathVariable("month") String
-            month, Map<String,Object> map) {
+            month, Map<String, Object> map) {
         Integer userId = (Integer) session.getAttribute("userId");
         if (userId != null) {
             User user = userInfoService.selectById(userId);
@@ -74,26 +73,18 @@ public class DiaryController {
 
     @RequestMapping("/")
     @ResponseBody
-    public FindDiaryResult getDiary(HttpSession session, int pageNum) {
+    public FindResult<List<UserDiary>> getDiary(HttpSession session, int pageNum) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
-        if (userId != null) {
-            return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
-        } else {
-            return new FindDiaryResult(UserCodeEnums.USER_NOTLOGIN);
-        }
+        return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
     }
 
     @RequestMapping("/{year}/{month}")
     @ResponseBody
-    public FindDiaryResult getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
+    public FindResult<List<UserDiary>> getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
             ("month") Integer month) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
-        if (userId != null) {
-            return userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month);
-        } else {
-            return new FindDiaryResult(UserCodeEnums.USER_NOTLOGIN);
-        }
+        return userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month);
     }
 }

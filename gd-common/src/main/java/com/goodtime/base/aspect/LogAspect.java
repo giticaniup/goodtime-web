@@ -1,36 +1,36 @@
 package com.goodtime.base.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
+import org.springframework.util.StopWatch;
 
 /**
- * 日志类
- * Created by zhongcy on 2016/5/9.
+ * aop
+ * Created by zhongcy on 2016/6/20.
  */
-@Aspect
 public class LogAspect {
 
-    private final static Logger logger = LoggerFactory.getLogger(LogAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     public Object around(ProceedingJoinPoint point) throws Throwable {
 
+        String className = point.getTarget().getClass().getName();
         String methodName = point.getSignature().getName();
 
-        logger.info("Received request: {}. params: {}", methodName, Arrays.toString(point.getArgs()));
-
-        long startTime = System.currentTimeMillis();
-
-        Object result = point.proceed();
-
-        long endTime = System.currentTimeMillis();
-
-        logger.info("result:{} , cost:{}", result, (endTime - startTime));
-
-        return result;
+        StopWatch totalStopWatch = new StopWatch();
+        totalStopWatch.start();
+        Object result = null;
+        try {
+            result = point.proceed();
+            return result;
+        } catch (Throwable e) {
+            logger.error("classname:{}, methodName:{}, args:{},info={}", className, methodName, point.getArgs(), e);
+            throw e;
+        } finally {
+            totalStopWatch.stop();
+            logger.info("classname:{}, methodName:{}, args:{},result:{}, timeCost:{} ",
+                    className, methodName, point.getArgs(),result, totalStopWatch.getTotalTimeMillis());
+        }
     }
-
 }
