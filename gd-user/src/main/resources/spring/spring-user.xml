@@ -10,6 +10,8 @@
          http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd" default-lazy-init ="true">
 
+    <import resource="spring.shiro.xml"/>
+
     <context:annotation-config/>
 
     <!-- service -->

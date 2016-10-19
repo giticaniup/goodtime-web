@@ -1,18 +1,21 @@
 package com.goodtime.user.controller;
 
+import com.github.api.code.AjaxCode;
 import com.github.api.entity.User;
-import com.github.api.enums.UserCodeEnums;
+import com.github.api.result.Result;
 import com.github.api.service.UserInfoService;
-import com.goodtime.base.result.BaseResult;
-import com.goodtime.user.results.UserResult;
+import com.goodtime.user.utils.UserConstants;
 import com.kode.api.DemoService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -22,9 +25,9 @@ import java.util.regex.Pattern;
  * 用户控制Controller类
  * Created by zhongcy on 2016/5/11.
  */
-@Controller
-@RequestMapping("/user")
-public class UserInfoController {
+@RestController
+@RequestMapping(value = "/user", produces = "application/json;charset=UTF-8")
+public class UserInfoController extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
 
@@ -60,22 +63,22 @@ public class UserInfoController {
         return "userLogin";
     }
 
-    @RequestMapping("/userLogin")
+    @RequestMapping("/login")
     @ResponseBody
-    public BaseResult userLogin(HttpSession session, String userId, String password) {
+    public Result userLogin(HttpSession session, String userId, String password) {
         logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
         if (!pattern.matcher(userId).matches()) {
-            return new UserResult(UserCodeEnums.USER_NOTLOGIN);
+            return new Result(AjaxCode.PARAM_ERROR, "请输入正确的用户名");
         }
         if (StringUtils.isEmpty(password)) {
-            return new UserResult(UserCodeEnums.USER_NOTLOGIN);
+            return new Result(AjaxCode.PARAM_ERROR, "密码不能为空");
         }
-        User user = userInfoService.loginIn(Integer.valueOf(userId), password);
-        if (user != null) {
-            session.setAttribute("userId", user.getUserId());
-            return new BaseResult();
+        Subject subject = SecurityUtils.getSubject();
+        if (!subject.isAuthenticated()) {
+            subject.login(new UsernamePasswordToken(userId, password));
         }
-        return new UserResult(UserCodeEnums.USER_NOTLOGIN);
+        session.setAttribute(UserConstants.CURRENT_USER, Integer.valueOf(userId));
+        return SUCCESS;
     }
 }
