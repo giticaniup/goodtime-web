@@ -26,6 +26,8 @@ ibatis/
 *.iml
 *.classpath
 *.td
-logs/
+/logs
+*/logs/
+*/target/
 .project
 
