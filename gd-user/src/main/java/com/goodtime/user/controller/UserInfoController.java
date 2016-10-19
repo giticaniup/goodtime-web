@@ -68,7 +68,7 @@ public class UserInfoController extends BaseController {
     public Result userLogin(HttpSession session, String userId, String password) {
         logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
-        if (!pattern.matcher(userId).matches()) {
+        if (StringUtils.isBlank(userId) || !pattern.matcher(userId).matches()) {
             return new Result(AjaxCode.PARAM_ERROR, "请输入正确的用户名");
         }
         if (StringUtils.isEmpty(password)) {
