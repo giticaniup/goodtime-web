@@ -1,4 +1,5 @@
 <?xml version= "1.0" encoding ="UTF-8" ?>
+<!--suppress SpringFacetInspection -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
@@ -21,6 +22,7 @@
 
     <!--AOP-->
     <bean id="logAspect" class="com.goodtime.base.aspect.LogAspect"/>
+<!--    <bean id="crossOriginAdaptor" class="com.goodtime.base.interceptor.CrossOriginAdaptor"/>-->
 
     <aop:config>
         <aop:aspect id="received" ref="logAspect">

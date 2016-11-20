@@ -5,16 +5,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-        http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+        http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven/>
+
+    <!--设置跨域访问-->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*" />
+    </mvc:cors>
 
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <context:component-scan base-package="com.goodtime.user">
@@ -49,7 +54,7 @@
         <mvc:view-controller path="/userLogin" view-name="userLogin"/>
         <mvc:view-controller path="/task/diary" view-name="diary"/>
         <mvc:view-controller path="/diary/addDiary" view-name="addDiary"/>
-        <mvc:view-controller path="/index" view-name="index"/>
+        <mvc:view-controller path="/index" view-name="todoList"/>
     <!-- 配置 MultipartResolver -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
