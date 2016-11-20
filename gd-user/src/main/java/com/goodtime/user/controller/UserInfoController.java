@@ -4,6 +4,7 @@ import com.github.api.code.AjaxCode;
 import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
 import com.goodtime.base.result.Result;
+import com.goodtime.user.model.LoginUser;
 import com.goodtime.user.utils.UserConstants;
 import com.kode.api.DemoService;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +14,7 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,20 +67,20 @@ public class UserInfoController extends BaseController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public Result userLogin(HttpSession session, String userId, String password) {
+    public Result userLogin(HttpSession session, @RequestBody LoginUser user) {
         logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
-        if (StringUtils.isBlank(userId) || !pattern.matcher(userId).matches()) {
+        if (StringUtils.isBlank(user.getUserId()) || !pattern.matcher(user.getUserId()).matches()) {
             return new Result(AjaxCode.PARAM_ERROR, "请输入正确的用户名");
         }
-        if (StringUtils.isEmpty(password)) {
+        if (StringUtils.isEmpty(user.getUserId())) {
             return new Result(AjaxCode.PARAM_ERROR, "密码不能为空");
         }
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {
-            subject.login(new UsernamePasswordToken(userId, password));
+            subject.login(new UsernamePasswordToken(user.getUserId(), user.getPassword()));
         }
-        session.setAttribute(UserConstants.CURRENT_USER, Integer.valueOf(userId));
+        session.setAttribute(UserConstants.CURRENT_USER, Integer.valueOf(user.getUserId()));
         return SUCCESS;
     }
 }
