@@ -2,9 +2,9 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.entity.UserTask;
-import com.github.api.result.Result;
 import com.github.api.service.UserInfoService;
 import com.github.api.service.UserTaskService;
+import com.goodtime.base.result.Result;
 import com.goodtime.user.utils.UserConstants;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;

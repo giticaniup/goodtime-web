@@ -30,7 +30,7 @@ public class LogAspect {
         } finally {
             totalStopWatch.stop();
             logger.info("classname:{}, methodName:{}, args:{},result:{}, timeCost:{} ",
-                    className, methodName, point.getArgs(),result, totalStopWatch.getTotalTimeMillis());
+                    className, methodName, point.getArgs(), result, totalStopWatch.getTotalTimeMillis());
         }
     }
 }

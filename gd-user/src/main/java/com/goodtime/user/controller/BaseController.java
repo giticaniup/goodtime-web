@@ -1,8 +1,8 @@
 package com.goodtime.user.controller;
 
 import com.github.api.code.AjaxCode;
-import com.github.api.result.Result;
 import com.goodtime.base.exception.BizException;
+import com.goodtime.base.result.Result;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;

@@ -2,9 +2,9 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.entity.UserDiary;
-import com.github.api.result.FindResult;
 import com.github.api.service.UserDiaryService;
 import com.github.api.service.UserInfoService;
+import com.goodtime.base.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -73,18 +72,18 @@ public class DiaryController {
 
     @RequestMapping("/")
     @ResponseBody
-    public FindResult<List<UserDiary>> getDiary(HttpSession session, int pageNum) {
+    public BaseResult getDiary(HttpSession session, int pageNum) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
-        return userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum);
+        return new BaseResult<>(userDiaryService.findDiaryByUserId(userId, PAGE_SIZE, pageNum));
     }
 
     @RequestMapping("/{year}/{month}")
     @ResponseBody
-    public FindResult<List<UserDiary>> getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
+    public BaseResult getDiary(HttpSession session, Integer pageNum, @PathVariable("year") Integer year, @PathVariable
             ("month") Integer month) {
         //从session中获取当前用户信息
         Integer userId = (Integer) session.getAttribute("userId");
-        return userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month);
+        return new BaseResult<>(userDiaryService.findDiaryByDate(userId, PAGE_SIZE, pageNum, year, month));
     }
 }
