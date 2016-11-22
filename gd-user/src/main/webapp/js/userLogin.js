@@ -5,7 +5,7 @@ var basePath = $("#basePath").val();
 function userLogin() {
     var userId = $('#inputUserId').val();
     var password = $("#inputPassword").val();
-    $.post(basePath+"/user/login", {userId: userId, password: password},
+    $.post(basePath+"/user/login", JSON.stringify({userId: userId, password: password}),
         function (result) {
             if (result.errorCode == 0 )  window.location.href = basePath+"/task/todoList";
             else {

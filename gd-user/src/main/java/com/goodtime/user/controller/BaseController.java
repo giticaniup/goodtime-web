@@ -4,14 +4,13 @@ import com.github.api.code.AjaxCode;
 import com.goodtime.base.exception.BizException;
 import com.goodtime.base.result.Result;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -29,12 +28,11 @@ public abstract class BaseController {
     /**
      * 异常通用处理
      *
-     * @param request 请求.
      * @param e       异常
      */
     @ExceptionHandler
     @ResponseBody
-    public Result exception(HttpServletRequest request, Exception e) {
+    public Result exception(Exception e) {
         if (e instanceof BizException) {
             BizException biz = (BizException) e;
             return new Result(biz.getErrorCode(), biz.getErrorDescription());
@@ -42,11 +40,13 @@ public abstract class BaseController {
         if (e instanceof IllegalArgumentException) {
             return new Result(AjaxCode.PARAM_ERROR, e.getLocalizedMessage());
         }
+        if (e instanceof AuthenticationException) {
+            // 身份验证失败
+            return new Result(AjaxCode.NO_AUTHORITY, e.getLocalizedMessage());
+        }
         if (e instanceof UnauthenticatedException) {
-            logger.error("requestUri={},requestMethod={},info={}", request.getRequestURI(), request.getMethod(), e);
             return new Result(AjaxCode.USER_NOT_LOGIN, "用户未登录");
         } else if (e instanceof UnauthorizedException) {
-            logger.error("requestUri={},requestMethod={},info={}", request.getRequestURI(), request.getMethod(), e);
             return new Result(AjaxCode.NO_AUTHORITY, "当前用户无权限");
         }
         return SYSTEM_ERROR;

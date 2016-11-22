@@ -252,7 +252,7 @@
             <artifactId>shiro-redis</artifactId>
         </dependency>
     </dependencies>
-<!--    <build>
+    <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
@@ -295,5 +295,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 </project>

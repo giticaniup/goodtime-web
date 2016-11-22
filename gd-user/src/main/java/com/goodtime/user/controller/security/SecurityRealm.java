@@ -1,9 +1,7 @@
 package com.goodtime.user.controller.security;
 
-import com.github.api.code.AjaxCode;
 import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
-import com.goodtime.base.exception.BizException;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -38,14 +36,14 @@ public class SecurityRealm extends AuthorizingRealm {
      * 分为管理员登录的验证和用户跳转的验证
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
 
         String userId = String.valueOf(token.getPrincipal());
         String password = String.valueOf((char[]) token.getCredentials());
 
         User authentication = userInfoService.loginIn(Integer.valueOf(userId), password);
         if (authentication == null) {
-            throw new BizException(AjaxCode.PARAM_ERROR, "用户名或密码错误");
+            throw new AuthenticationException("用户名或密码错误");
         }
         return new SimpleAuthenticationInfo(userId, password, getName());
     }
