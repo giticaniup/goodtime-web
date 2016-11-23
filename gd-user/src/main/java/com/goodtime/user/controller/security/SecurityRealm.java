@@ -1,8 +1,6 @@
 package com.goodtime.user.controller.security;
 
-import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
@@ -32,19 +30,13 @@ public class SecurityRealm extends AuthorizingRealm {
     }
 
     /**
-     * 登录验证
-     * 分为管理员登录的验证和用户跳转的验证
+     * shiro登录信息
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
-
         String userId = String.valueOf(token.getPrincipal());
         String password = String.valueOf((char[]) token.getCredentials());
 
-        User authentication = userInfoService.loginIn(Integer.valueOf(userId), password);
-        if (authentication == null) {
-            throw new AuthenticationException("用户名或密码错误");
-        }
         return new SimpleAuthenticationInfo(userId, password, getName());
     }
 }

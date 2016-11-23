@@ -17,12 +17,11 @@
 
     <!-- service -->
     <context:component-scan base-package="com.goodtime.user">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--AOP-->
     <bean id="logAspect" class="com.goodtime.base.aspect.LogAspect"/>
-<!--    <bean id="crossOriginAdaptor" class="com.goodtime.base.interceptor.CrossOriginAdaptor"/>-->
 
     <aop:config>
         <aop:aspect id="received" ref="logAspect">

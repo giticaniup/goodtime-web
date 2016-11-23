@@ -27,17 +27,17 @@ public class TestController {
         logger.error(userTask.toString());
     }
 
-    public void aopTest(){
+    public void aopTest() {
         System.out.println("aopTest");
     }
 
-    public static void testStatic(){
+    public static void testStatic() {
         System.out.println("static");
     }
 
     @RequestMapping("/test")
-    public String testDate(Map<String,Date> map){
-        map.put("date",new Date());
+    public String testDate(Map<String, Date> map) {
+        map.put("date", new Date());
         return "test";
     }
 }

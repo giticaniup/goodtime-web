@@ -28,7 +28,7 @@ public abstract class BaseController {
     /**
      * 异常通用处理
      *
-     * @param e       异常
+     * @param e 异常
      */
     @ExceptionHandler
     @ResponseBody

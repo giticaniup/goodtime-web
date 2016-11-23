@@ -6,9 +6,9 @@ import com.github.api.service.UserInfoService;
 import com.goodtime.base.result.Result;
 import com.goodtime.user.model.LoginUser;
 import com.goodtime.user.utils.UserConstants;
-import com.kode.api.DemoService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -16,11 +16,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -28,44 +28,15 @@ import java.util.regex.Pattern;
  * Created by zhongcy on 2016/5/11.
  */
 @RestController
-@RequestMapping(value = "/user", produces = "application/json;charset=UTF-8")
-public class UserInfoController extends BaseController {
+@RequestMapping(value = "/goodtime", produces = "application/json;charset=UTF-8")
+public class UserController extends BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserInfoService userInfoService;
 
-    @Autowired
-    private DemoService demoService;
-
-    /**
-     * 测试缓存
-     */
-    @RequestMapping("/test")
-    public void test() {
-        logger.info("this is controller");
-        demoService.say();
-        userInfoService.selectById(1);
-        userInfoService.selectById(1);
-        User user = new User();
-        user.setUserId(1);
-        user.setAge(22);
-        user.setBirthday(new Date());
-        user.setGender(0);
-        user.setName("lbq");
-        user.setPassword("11");
-        user.setUserName("lbq");
-        userInfoService.updateUser(user);
-        logger.info(userInfoService.selectById(1).toString());
-    }
-
-    @RequestMapping("/loginPage")
-    public String register() {
-        return "userLogin";
-    }
-
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Result userLogin(HttpSession session, @RequestBody LoginUser user) {
         logger.debug("test");
@@ -75,6 +46,10 @@ public class UserInfoController extends BaseController {
         }
         if (StringUtils.isEmpty(user.getUserId())) {
             return new Result(AjaxCode.PARAM_ERROR, "密码不能为空");
+        }
+        User authentication = userInfoService.loginIn(Integer.valueOf(user.getUserId()), user.getPassword());
+        if (authentication == null) {
+            throw new AuthenticationException("用户名或密码错误");
         }
         Subject subject = SecurityUtils.getSubject();
         if (!subject.isAuthenticated()) {

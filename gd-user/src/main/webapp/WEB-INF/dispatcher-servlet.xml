@@ -15,7 +15,7 @@
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven/>
 
-    <!--设置跨域访问-->
+    <!--设置跨域访问，已经通过前端代理解决-->
     <mvc:cors>
         <mvc:mapping path="/**"
                      allowed-origins="*" />

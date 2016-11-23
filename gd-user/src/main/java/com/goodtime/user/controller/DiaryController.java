@@ -6,10 +6,10 @@ import com.github.api.service.UserDiaryService;
 import com.github.api.service.UserInfoService;
 import com.goodtime.base.result.BaseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -19,8 +19,8 @@ import java.util.Map;
  * 日志处理器
  * Created by zhongcy on 2016/6/27.
  */
-@Controller
-@RequestMapping("/diary")
+@RestController
+@RequestMapping(value = "/goodtime", produces = "application/json;charset=UTF-8")
 public class DiaryController {
 
     private static final int PAGE_SIZE = 10;

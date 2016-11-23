@@ -30,9 +30,9 @@ public class IndexController {
     }
 
     @RequestMapping("/index/testMap")
-    public String testMap(HttpServletRequest request,@RequestParam("id") String id,  @RequestParam() Map<String,
-            String> map1, Map<String,Object> map) {
-        System.out.println("id:"+id);
+    public String testMap(HttpServletRequest request, @RequestParam("id") String id, @RequestParam() Map<String,
+            String> map1, Map<String, Object> map) {
+        System.out.println("id:" + id);
         System.out.println(request.getParameter("id"));
         try {
             System.out.println(request.getInputStream().toString());
@@ -43,13 +43,13 @@ public class IndexController {
         map1.put("test", "test1024");
         map.put("test", "test1024");
         System.out.println("map1:" + map1);
-        System.out.println("map:"+map);
+        System.out.println("map:" + map);
         return "test";
     }
 
     @ResponseBody
     @RequestMapping("/index/testJsonMap")
-    public String testJsonMap(@RequestBody Map<String,String> map1){
+    public String testJsonMap(@RequestBody Map<String, String> map1) {
         System.out.println(map1);
         return "success";
     }
