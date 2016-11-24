@@ -7,6 +7,7 @@ import com.goodtime.base.result.Result;
 import com.goodtime.user.utils.UserConstants;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class TaskController extends BaseController {
 
     @RequestMapping(value = "/task",method = RequestMethod.POST)
     @RequiresAuthentication
-    public Result addUserTask(HttpSession session, UserTask userTask) {
+    public Result addUserTask(HttpSession session, @RequestBody UserTask userTask) {
         Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
         userTask.setUserId(userId);
         userTask.checkParams();
