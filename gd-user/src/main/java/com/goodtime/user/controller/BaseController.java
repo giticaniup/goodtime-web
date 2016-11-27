@@ -1,6 +1,6 @@
 package com.goodtime.user.controller;
 
-import com.github.api.code.AjaxCode;
+import com.goodtime.base.code.AjaxCode;
 import com.goodtime.base.exception.BizException;
 import com.goodtime.base.result.Result;
 import org.apache.commons.lang3.StringUtils;
