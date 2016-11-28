@@ -47,16 +47,32 @@ public class DiaryController extends BaseController{
         userDiary.setUserId(userId);
         userDiaryService.saveUserDiary(userDiary);
         return SUCCESS;
+    }
 
+    @RequestMapping(value = "/diary",method = RequestMethod.PATCH)
+    @RequiresAuthentication
+    public Result updateDiary(@RequestBody UserDiary userDiary){
+        checkParamNotBlank(userDiary.getId(),"日志id不能为空");
+        userDiaryService.updateUserDiary(userDiary);
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/diary",method = RequestMethod.DELETE)
+    @RequiresAuthentication
+    public Result deleteDiary(Long id){
+        checkParamNotBlank(id,"日志id不能为空");
+        userDiaryService.deleteUserDiary(id);
+        return SUCCESS;
     }
 
     @RequestMapping(value = "diary/{id}",method = RequestMethod.GET)
     @RequiresAuthentication
-    public BaseResult getDiaryById(@PathVariable("id") Integer id){
+    public BaseResult getDiaryById(@PathVariable("id") Long id){
         UserDiary userDiary = userDiaryService.findDiaryById(id);
         return new BaseResult<>(userDiary);
     }
 
+    //todo 整理旧代码
     @RequestMapping("/diaryList")
     public ModelAndView diaryList(HttpSession session) {
         ModelAndView mv = new ModelAndView();
