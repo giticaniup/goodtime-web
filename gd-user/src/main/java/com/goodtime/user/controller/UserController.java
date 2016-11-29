@@ -58,4 +58,12 @@ public class UserController extends BaseController {
         session.setAttribute(UserConstants.CURRENT_USER, Integer.valueOf(user.getUserId()));
         return SUCCESS;
     }
+
+    @RequestMapping(value = "/loginState", method = RequestMethod.GET)
+    public Result getLoginState() {
+        if (SecurityUtils.getSubject().isAuthenticated()) {
+            return SUCCESS;
+        }
+        return new Result(AjaxCode.USER_NOT_LOGIN, "用户未登录");
+    }
 }

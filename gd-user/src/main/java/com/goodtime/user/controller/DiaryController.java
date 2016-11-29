@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -45,14 +46,21 @@ public class DiaryController extends BaseController{
     public Result saveDiary(HttpSession session,@RequestBody UserDiary userDiary){
         Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
         userDiary.setUserId(userId);
+        Date date = new Date();
+        userDiary.setCreateTime(date);
+        userDiary.setModifyTime(date);
         userDiaryService.saveUserDiary(userDiary);
         return SUCCESS;
     }
 
-    @RequestMapping(value = "/diary",method = RequestMethod.PATCH)
+    @RequestMapping(value = "/diary/{id}",method = RequestMethod.PATCH)
     @RequiresAuthentication
-    public Result updateDiary(@RequestBody UserDiary userDiary){
-        checkParamNotBlank(userDiary.getId(),"日志id不能为空");
+    public Result updateDiary(HttpSession session,@RequestBody UserDiary userDiary, @PathVariable("id") Long id){
+        Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
+        checkParamNotBlank(id,"日志id不能为空");
+        userDiary.setUserId(userId);
+        userDiary.setId(id);
+        userDiary.setModifyTime(new Date());
         userDiaryService.updateUserDiary(userDiary);
         return SUCCESS;
     }
@@ -65,7 +73,7 @@ public class DiaryController extends BaseController{
         return SUCCESS;
     }
 
-    @RequestMapping(value = "diary/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/diary/{id}",method = RequestMethod.GET)
     @RequiresAuthentication
     public BaseResult getDiaryById(@PathVariable("id") Long id){
         UserDiary userDiary = userDiaryService.findDiaryById(id);
