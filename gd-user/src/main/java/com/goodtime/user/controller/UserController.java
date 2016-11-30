@@ -66,4 +66,14 @@ public class UserController extends BaseController {
         }
         return new Result(AjaxCode.USER_NOT_LOGIN, "用户未登录");
     }
+
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    public Result logout(){
+        Subject subject = SecurityUtils.getSubject();
+        if(subject.isAuthenticated()){
+            subject.logout();
+            return SUCCESS;
+        }
+        return new Result(AjaxCode.USER_NOT_LOGIN, "用户未登录");
+    }
 }
