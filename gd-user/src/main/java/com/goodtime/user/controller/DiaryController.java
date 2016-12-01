@@ -80,6 +80,13 @@ public class DiaryController extends BaseController{
         return new BaseResult<>(userDiary);
     }
 
+    @RequestMapping(value = "/diary/group/{id}", method = RequestMethod.GET)
+    @RequiresAuthentication
+    public BaseResult getDiaryByGroup(HttpSession session, @PathVariable("id") Integer id) {
+        Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
+        return new BaseResult<>(userDiaryService.getDiaryByGroup(userId,id));
+    }
+
     //todo 整理旧代码
     @RequestMapping("/diaryList")
     public ModelAndView diaryList(HttpSession session) {

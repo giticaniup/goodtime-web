@@ -7,6 +7,7 @@ import com.goodtime.base.result.Result;
 import com.goodtime.user.utils.UserConstants;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,33 +20,38 @@ import javax.servlet.http.HttpSession;
  * Created by zhongcy on 2016/11/30.
  */
 @RestController
-public class DiaryGroupController extends BaseController{
+@RequestMapping(value = "/goodtime", produces = "application/json;charset=UTF-8")
+public class DiaryGroupController extends BaseController {
 
     @Autowired
     private DiaryGroupService diaryGroupService;
 
-    @RequestMapping(value = "/goodtime/diaryGroup",method = RequestMethod.GET)
+    @RequestMapping(value = "/diaryGroup", method = RequestMethod.GET)
     @RequiresAuthentication
-    public BaseResult getDiaryGroup(HttpSession session){
+    public BaseResult getDiaryGroup(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
         return new BaseResult<>(diaryGroupService.getDiaryGroup(userId));
     }
 
-    @RequestMapping(value = "/goodtime/diaryGroup",method = RequestMethod.GET)
+    @RequestMapping(value = "/diaryGroup", method = RequestMethod.POST)
     @RequiresAuthentication
-    public Result saveDiaryGroup(HttpSession session, @RequestBody DiaryGroup diaryGroup){
+    public Result saveDiaryGroup(HttpSession session, @RequestBody DiaryGroup diaryGroup) {
         Integer userId = (Integer) session.getAttribute(UserConstants.CURRENT_USER);
         diaryGroup.setCreator(userId);
         diaryGroupService.addDiaryGroup(diaryGroup);
         return SUCCESS;
     }
 
-    public Result updateDiaryGroup(@RequestBody DiaryGroup diaryGroup){
+    @RequestMapping(value = "/diaryGroup", method = RequestMethod.PATCH)
+    @RequiresAuthentication
+    public Result updateDiaryGroup(@RequestBody DiaryGroup diaryGroup) {
         diaryGroupService.updateDiaryGroup(diaryGroup);
         return SUCCESS;
     }
 
-    public Result deleteDiaryGroup(Integer id){
+    @RequestMapping(value = "/diaryGroup", method = RequestMethod.DELETE)
+    @RequiresAuthentication
+    public Result deleteDiaryGroup(Integer id) {
         diaryGroupService.deleteDiaryGroup(id);
         return SUCCESS;
     }
