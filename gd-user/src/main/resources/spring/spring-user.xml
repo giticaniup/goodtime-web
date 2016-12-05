@@ -11,7 +11,7 @@
          http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd" default-lazy-init ="true">
 
-    <import resource="spring.shiro.xml"/>
+    <import resource="spring-shiro.xml"/>
 
     <context:annotation-config/>
 
@@ -36,7 +36,6 @@
 
     <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
 
-    <dubbo:reference id="hellodubbo" interface="com.kode.api.DemoService"/>
     <dubbo:reference id="userInfoService" interface="com.github.api.service.UserInfoService"/>
     <dubbo:reference id="userTaskService" interface="com.github.api.service.UserTaskService"/>
     <dubbo:reference id="userDiaryService" interface="com.github.api.service.UserDiaryService"/>

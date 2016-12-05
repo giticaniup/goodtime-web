@@ -1,0 +1,21 @@
+<!--退出时清除权限缓存信息，角色信息变更时清除所有ehcache缓存-->
+<ehcache updateCheck="false" name="shiroCache">
+    <diskStore path="user.home"/>
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="0"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+    />
+    <cache name="com.goodtime"
+           maxElementsInMemory="3000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="604800"
+           timeToLiveSeconds="2592000"
+           memoryStoreEvictionPolicy="LFU"
+    />
+</ehcache>
