@@ -39,7 +39,6 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
     public Result userLogin(HttpSession session, @RequestBody LoginUser user) {
-        logger.debug("test");
         Pattern pattern = Pattern.compile("[0-9]+");
         if (StringUtils.isBlank(user.getUserId()) || !pattern.matcher(user.getUserId()).matches()) {
             return new Result(AjaxCode.PARAM_ERROR, "请输入正确的用户名");
