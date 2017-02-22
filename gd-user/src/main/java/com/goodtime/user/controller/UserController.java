@@ -36,9 +36,9 @@ public class UserController extends BaseController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Result userLogin(HttpSession session, @RequestBody LoginUser user) {
+    public Result userLogin(@RequestBody LoginUser user, HttpSession session) {
         Pattern pattern = Pattern.compile("[0-9]+");
         if (StringUtils.isBlank(user.getUserId()) || !pattern.matcher(user.getUserId()).matches()) {
             return new Result(AjaxCode.PARAM_ERROR, "请输入正确的用户名");
@@ -66,10 +66,10 @@ public class UserController extends BaseController {
         return new Result(AjaxCode.USER_NOT_LOGIN, "用户未登录");
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    public Result logout(){
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public Result logout() {
         Subject subject = SecurityUtils.getSubject();
-        if(subject.isAuthenticated()){
+        if (subject.isAuthenticated()) {
             subject.logout();
             return SUCCESS;
         }

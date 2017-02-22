@@ -33,9 +33,17 @@
         <constructor-arg value="com.github.api.service.UserTaskService"></constructor-arg>
     </bean>
 
-    <bean id="UserDiaryService" name="UserDiaryService" class="org.mockito.Mockito"
+    <bean id="userDiaryService" name="userDiaryService" class="org.mockito.Mockito"
           factory-method="mock">
         <constructor-arg value="com.github.api.service.UserDiaryService"></constructor-arg>
+    </bean>
+    <bean id="diaryGroupService" name="diaryGroupService" class="org.mockito.Mockito"
+          factory-method="mock">
+        <constructor-arg value="com.github.api.service.DiaryGroupService"></constructor-arg>
+    </bean>
+    <bean id="systemMessageService" name="systemMessageService" class="org.mockito.Mockito"
+          factory-method="mock">
+        <constructor-arg value="com.github.api.service.SystemMessageService"></constructor-arg>
     </bean>
 
 </beans>
