@@ -41,5 +41,6 @@
     <dubbo:reference id="userDiaryService" interface="com.github.api.service.UserDiaryService"/>
     <dubbo:reference id="diaryGroupService" interface="com.github.api.service.DiaryGroupService"/>
     <dubbo:reference id="systemMessageService" interface="com.github.api.service.SystemMessageService"/>
+    <dubbo:reference id="activityService" interface="com.github.api.service.ActivityService"/>
 
 </beans>

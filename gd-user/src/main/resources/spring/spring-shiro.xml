@@ -17,7 +17,6 @@
         <property name="cacheManager" ref="cacheManager"/>
     </bean>
 
-    <!-- 缓存管理器 使用Ehcache实现 -->
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
         <property name="cacheManager" ref="ehCacheManager"/>
     </bean>
