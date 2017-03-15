@@ -13,6 +13,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <goodtime.version>1.0-SNAPSHOT</goodtime.version>
         <dubbo.version>2.5.3</dubbo.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <logback.version>1.1.2</logback.version>
@@ -23,6 +24,17 @@
 
     <dependencyManagement>
         <dependencies>
+            <!--goodtime-->
+            <dependency>
+                <groupId>com.kode.dubbo</groupId>
+                <artifactId>api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kode.dubbo</groupId>
+                <artifactId>common</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
             <!-- junit-->
             <dependency>
                 <groupId>junit</groupId>

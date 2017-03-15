@@ -33,11 +33,21 @@
     <artifactId>gd-user</artifactId>
 
     <dependencies>
+        <!--goodtime-->
+        <dependency>
+            <groupId>com.kode.dubbo</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.kode.dubbo</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.github.kode</groupId>
             <artifactId>gd-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -176,12 +186,6 @@
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.kode.dubbo</groupId>
-            <artifactId>api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
