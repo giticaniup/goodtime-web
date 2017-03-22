@@ -2,14 +2,13 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.Activity;
 import com.github.api.service.ActivityService;
+import com.goodtime.base.result.BaseResult;
 import com.goodtime.base.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * ActivityController
@@ -17,7 +16,7 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping(value = "/goodtime", produces = "application/json;charset=UTF-8")
-public class ActivityController extends BaseController{
+public class ActivityController extends BaseController {
     @Autowired
     private ActivityService activityService;
 
@@ -27,5 +26,17 @@ public class ActivityController extends BaseController{
         activity.setUpdateTime(new Date());
         activityService.saveActivity(activity);
         return SUCCESS;
+    }
+
+    @RequestMapping(value = "/activity/user/{userId}", method = RequestMethod.GET)
+    public BaseResult<List<Activity>> listActivity(@PathVariable("userId") String userId) {
+        checkParamNotBlank(userId, "用户ID不能为空");
+        return new BaseResult<>(activityService.listActivity(userId));
+    }
+
+    @GetMapping(value = "activity/{id}")
+    public BaseResult<Activity> getActivity(@PathVariable("id") String id){
+        checkParamNotBlank(id,"活动id不能为空");
+        return new BaseResult<>(activityService.getActivity(id));
     }
 }
