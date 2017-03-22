@@ -1,7 +1,7 @@
 package com.goodtime.user.controller;
 
-import com.goodtime.base.code.AjaxCode;
-import com.goodtime.base.exception.BizException;
+import com.github.common.code.AjaxCode;
+import com.github.common.exception.BizException;
 import com.goodtime.base.result.Result;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
