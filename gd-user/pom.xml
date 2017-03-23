@@ -21,9 +21,9 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <artifactId>goodtime</artifactId>
         <groupId>com.github.kode</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>goodtime-web</artifactId>
+        <version>${goodtime-web.version}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>com.github.kode</groupId>
             <artifactId>gd-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${goodtime-web.version}</version>
         </dependency>
 
         <dependency>

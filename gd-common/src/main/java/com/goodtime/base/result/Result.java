@@ -1,6 +1,6 @@
 package com.goodtime.base.result;
 
-import com.goodtime.base.code.AjaxCode;
+import com.goodtime.base.constants.AjaxCode;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;

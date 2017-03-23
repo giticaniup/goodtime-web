@@ -2,18 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.kode</groupId>
-    <artifactId>goodtime</artifactId>
+    <artifactId>goodtime-web</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${goodtime-web.version}</version>
     <modules>
         <module>gd-common</module>
         <module>gd-user</module>
     </modules>
-    <name>goodtime</name>
+    <name>goodtime-web</name>
     <url>http://maven.apache.org</url>
 
     <properties>
-        <goodtime.version>1.0-SNAPSHOT</goodtime.version>
+        <goodtime-web.version>1.0-SNAPSHOT</goodtime-web.version>
         <dubbo.version>2.5.3</dubbo.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <logback.version>1.1.2</logback.version>
@@ -24,7 +24,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--goodtime-->
+            <!--goodtime-web-->
             <dependency>
                 <groupId>com.kode.dubbo</groupId>
                 <artifactId>api</artifactId>
@@ -359,7 +359,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <warName>goodtime</warName>
+                    <warName>goodtime-web</warName>
                 </configuration>
             </plugin>
             <plugin>
