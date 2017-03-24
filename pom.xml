@@ -7,7 +7,7 @@
     <version>${goodtime-web.version}</version>
     <modules>
         <module>goodtime-web-common</module>
-        <module>goodtime-web-user</module>
+        <module>goodtime-web-broker</module>
     </modules>
     <name>goodtime-web</name>
     <url>http://maven.apache.org</url>
