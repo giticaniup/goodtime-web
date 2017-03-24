@@ -30,7 +30,7 @@
     <packaging>war</packaging>
 
     <name>gd-user</name>
-    <artifactId>goodtime-web-user</artifactId>
+    <artifactId>goodtime-web-broker</artifactId>
 
     <dependencies>
         <!--goodtime-->
