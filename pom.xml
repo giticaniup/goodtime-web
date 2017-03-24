@@ -6,8 +6,8 @@
     <packaging>pom</packaging>
     <version>${goodtime-web.version}</version>
     <modules>
-        <module>gd-common</module>
-        <module>gd-user</module>
+        <module>goodtime-web-common</module>
+        <module>goodtime-web-user</module>
     </modules>
     <name>goodtime-web</name>
     <url>http://maven.apache.org</url>
@@ -27,12 +27,12 @@
             <!--goodtime-web-->
             <dependency>
                 <groupId>com.kode.dubbo</groupId>
-                <artifactId>api</artifactId>
+                <artifactId>goodtime-api</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.kode.dubbo</groupId>
-                <artifactId>common</artifactId>
+                <artifactId>goodtime-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <!-- junit-->

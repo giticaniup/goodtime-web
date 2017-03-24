@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gd-common</artifactId>
+    <artifactId>goodtime-web-common</artifactId>
     <version>${goodtime-web.version}</version>
 
     <dependencies>

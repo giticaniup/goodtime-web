@@ -30,21 +30,21 @@
     <packaging>war</packaging>
 
     <name>gd-user</name>
-    <artifactId>gd-user</artifactId>
+    <artifactId>goodtime-web-user</artifactId>
 
     <dependencies>
         <!--goodtime-->
         <dependency>
             <groupId>com.kode.dubbo</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>goodtime-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.kode.dubbo</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>goodtime-common</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.kode</groupId>
-            <artifactId>gd-common</artifactId>
+            <artifactId>goodtime-web-common</artifactId>
             <version>${goodtime-web.version}</version>
         </dependency>
 
