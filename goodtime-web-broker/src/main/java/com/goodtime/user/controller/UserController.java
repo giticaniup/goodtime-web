@@ -2,7 +2,7 @@ package com.goodtime.user.controller;
 
 import com.github.api.entity.User;
 import com.github.api.service.UserInfoService;
-import com.github.common.code.AjaxCode;
+import com.goodtime.base.constants.AjaxCode;
 import com.goodtime.base.result.Result;
 import com.goodtime.user.model.LoginUser;
 import com.goodtime.user.utils.UserConstants;

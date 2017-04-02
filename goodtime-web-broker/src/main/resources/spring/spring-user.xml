@@ -21,7 +21,7 @@
     </context:component-scan>
 
     <!--AOP-->
-    <bean id="logAspect" class="com.goodtime.base.aspect.LogAspect"/>
+    <bean id="logAspect" class="com.github.common.aspect.LogAspect"/>
 
     <aop:config>
         <aop:aspect id="received" ref="logAspect">
@@ -40,11 +40,13 @@
 
     <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
 
+    <dubbo:consumer timeout="5000"/>
+
     <dubbo:reference id="userInfoService" interface="com.github.api.service.UserInfoService"/>
     <dubbo:reference id="userTaskService" interface="com.github.api.service.UserTaskService"/>
     <dubbo:reference id="userDiaryService" interface="com.github.api.service.UserDiaryService"/>
     <dubbo:reference id="diaryGroupService" interface="com.github.api.service.DiaryGroupService"/>
     <dubbo:reference id="systemMessageService" interface="com.github.api.service.SystemMessageService"/>
-    <dubbo:reference id="activityService" interface="com.github.api.service.ActivityService"/>
+    <dubbo:reference id="activityService" interface="com.github.api.service.ActivityService" timeout="6000"/>
 
 </beans>
