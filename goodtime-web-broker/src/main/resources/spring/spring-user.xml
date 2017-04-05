@@ -21,7 +21,7 @@
     </context:component-scan>
 
     <!--AOP-->
-    <bean id="logAspect" class="com.goodtime.base.aspect.LogAspect"/>
+    <bean id="logAspect" class="com.github.common.aspect.LogAspect"/>
 
     <aop:config>
         <aop:aspect id="received" ref="logAspect">
